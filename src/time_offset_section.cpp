@@ -29,7 +29,7 @@ TimeOffsetSection::TimeOffsetSection(const uint8_t * const buffer) : ShortCrcSec
 	descriptorsLoopLength = DVB_LENGTH(&buffer[8]);
 
 	for (size_t i = 0; i < descriptorsLoopLength; i += buffer[i + 11] + 2)
-		descriptor(&buffer[i + 10]);
+		descriptor(&buffer[i + 10], SCOPE_SI);
 }
 
 uint16_t TimeOffsetSection::getUtcTimeMjd(void) const

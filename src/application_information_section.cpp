@@ -22,22 +22,6 @@
 #include <dvbsi++/application_information_section.h>
 #include <dvbsi++/byte_stream.h>
 
-ApplicationIdentifier::ApplicationIdentifier(const uint8_t * const buffer)
-{
-	organisationId = UINT32(&buffer[0]);
-	applicationId = UINT16(&buffer[4]);
-}
-
-uint32_t ApplicationIdentifier::getOrganisationId(void) const
-{
-	return organisationId;
-}
-
-uint16_t ApplicationIdentifier::getApplicationId(void) const
-{
-	return applicationId;
-}
-
 ApplicationInformation::ApplicationInformation(const uint8_t * const buffer)
 {
 	applicationIdentifier = new ApplicationIdentifier(&buffer[0]);
@@ -45,7 +29,7 @@ ApplicationInformation::ApplicationInformation(const uint8_t * const buffer)
 	applicationDescriptorsLoopLength = DVB_LENGTH(&buffer[7]);
 
 	for (size_t i = 0; i < applicationDescriptorsLoopLength; i += buffer[i + 10] + 2)
-		descriptor(&buffer[i + 9]);
+		descriptor(&buffer[i + 9], SCOPE_MHP);
 }
 
 ApplicationInformation::~ApplicationInformation(void)
@@ -68,7 +52,7 @@ ApplicationInformationSection::ApplicationInformationSection(const uint8_t * con
 	commonDescriptorsLength = DVB_LENGTH(&buffer[8]);
 
 	for (size_t i = 0; i < commonDescriptorsLength; i += buffer[i + 11] + 2)
-		descriptor(&buffer[i + 10]);
+		descriptor(&buffer[i + 10], SCOPE_MHP);
 
 	applicationLoopLength = DVB_LENGTH(&buffer[commonDescriptorsLength + 10]);
 

@@ -24,6 +24,6 @@
 ConditionalAccessSection::ConditionalAccessSection(const uint8_t * const buffer) : LongCrcSection(buffer)
 {
 	for (size_t i = 8; i < sectionLength - 1; i += buffer[i + 1] + 2)
-		descriptor(&buffer[i]);
+		descriptor(&buffer[i], SCOPE_SI);
 }
 

@@ -113,8 +113,6 @@ enum TableId {
 	TID_CAMT_PRIVATE_D	= 0x8F,
 
 	/* 0x90 - 0xFE: PRIVATE */
-	TID_TOC			= 0x91,
-	TID_HIT			= 0x92,
 
 	/* 0xFF: ISO RESERVED */
 	TID_RESERVED		= 0xFF

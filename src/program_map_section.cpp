@@ -29,7 +29,7 @@ ElementaryStreamInfo::ElementaryStreamInfo(const uint8_t * const buffer)
 	esInfoLength = DVB_LENGTH(&buffer[3]);
 
 	for (size_t i = 5; i < esInfoLength + 5; i += buffer[i + 1] + 2)
-		descriptor(&buffer[i]);
+		descriptor(&buffer[i], SCOPE_SI);
 }
 
 uint8_t ElementaryStreamInfo::getType(void) const
@@ -48,7 +48,7 @@ ProgramMapSection::ProgramMapSection(const uint8_t * const buffer) : LongCrcSect
 	programInfoLength = DVB_LENGTH(&buffer[10]);
 
 	for (size_t i = 12; i < programInfoLength + 12; i += buffer[i + 1] + 2)
-		descriptor(&buffer[i]);
+		descriptor(&buffer[i], SCOPE_SI);
 
 	for (size_t i = programInfoLength + 12; i < sectionLength - 1; i += DVB_LENGTH(&buffer[i + 3]) + 5)
 		esInfo.push_back(new ElementaryStreamInfo(&buffer[i]));

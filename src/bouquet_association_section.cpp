@@ -29,7 +29,7 @@ BouquetAssociation::BouquetAssociation(const uint8_t * const buffer)
 	transportStreamLoopLength = DVB_LENGTH(&buffer[4]);
 
 	for (size_t i = 6; i < transportStreamLoopLength + 6; i += buffer[i + 1] + 2)
-		descriptor(&buffer[i]);
+		descriptor(&buffer[i], SCOPE_SI);
 }
 
 BouquetAssociationSection::BouquetAssociationSection(const uint8_t * const buffer) : LongCrcSection(buffer)
@@ -37,7 +37,7 @@ BouquetAssociationSection::BouquetAssociationSection(const uint8_t * const buffe
 	bouquetDescriptorsLength = DVB_LENGTH(&buffer[8]);
 
 	for (size_t i = 10; i < bouquetDescriptorsLength + 10; i += buffer[i + 1] + 2)
-		descriptor(&buffer[i]);
+		descriptor(&buffer[i], SCOPE_SI);
 
 	transportStreamLoopLength = DVB_LENGTH(&buffer[bouquetDescriptorsLength + 10]);
 

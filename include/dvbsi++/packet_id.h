@@ -23,7 +23,7 @@
 #define __packet_id_h__
 
 enum PacketId {
-	/* ETSI EN 300 468 V1.5.1 (2003-01) */
+	/* ETSI EN 300 468 V1.5.1 (2003-05) */
 	PID_PAT		= 0x0000,
 	PID_CAT		= 0x0001,
 	PID_TSDT	= 0x0002,

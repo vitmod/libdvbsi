@@ -24,19 +24,7 @@
 
 #include "descriptor_container.h"
 #include "long_crc_section.h"
-
-class ApplicationIdentifier
-{
-	protected:
-		unsigned organisationId				: 32;
-		unsigned applicationId				: 16;
-
-	public:
-		ApplicationIdentifier(const uint8_t * const buffer);
-
-		uint32_t getOrganisationId(void) const;
-		uint16_t getApplicationId(void) const;
-};
+#include "application_identifier.h"
 
 class ApplicationInformation : public DescriptorContainer
 {

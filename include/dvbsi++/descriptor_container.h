@@ -24,10 +24,19 @@
 
 #include "descriptor.h"
 
+enum DescriptorScope {
+	SCOPE_SI,
+	SCOPE_CAROUSEL,
+	SCOPE_MHP
+};
+
 class DescriptorContainer
 {
 	protected:
-		void descriptor(const uint8_t * const buffer);
+		void descriptor(const uint8_t * const buffer, const enum DescriptorScope scope);
+		void descriptorSi(const uint8_t * const buffer);
+		void descriptorCarousel(const uint8_t * const buffer);
+		void descriptorMhp(const uint8_t * const buffer);
 		DescriptorVector descriptorVector;
 
 	public:

@@ -32,7 +32,7 @@ ServiceDescription::ServiceDescription(const uint8_t * const buffer)
 	descriptorsLoopLength = DVB_LENGTH(&buffer[3]);
 
 	for (size_t i = 5; i < descriptorsLoopLength + 5; i += buffer[i + 1] + 2)
-		descriptor(&buffer[i]);
+		descriptor(&buffer[i], SCOPE_SI);
 }
 
 uint16_t ServiceDescription::getServiceId(void) const

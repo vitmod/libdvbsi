@@ -33,7 +33,7 @@ Event::Event(const uint8_t * const buffer)
 	descriptorsLoopLength = DVB_LENGTH(&buffer[10]);
 
 	for (size_t i = 12; i < descriptorsLoopLength + 12; i += buffer[i + 1] + 2)
-		descriptor(&buffer[i]);
+		descriptor(&buffer[i], SCOPE_SI);
 }
 
 uint16_t Event::getEventId(void) const
