@@ -42,7 +42,7 @@ MultilingualComponentDescriptor::MultilingualComponentDescriptor(const uint8_t *
 {
 	componentTag = buffer[2];
 
-	for (size_t i = 0; i < descriptorLength - 1; i += buffer[i + 4] + 2)
+	for (size_t i = 0; i < descriptorLength - 1; i += buffer[i + 6] + 4)
 		multilingualComponents.push_back(new MultilingualComponent(&buffer[i + 3]));
 }
 
