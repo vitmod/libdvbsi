@@ -26,6 +26,10 @@ BouquetNameDescriptor::BouquetNameDescriptor(const uint8_t * const buffer) : Des
 	bouquetName.assign((char *)&buffer[2], descriptorLength);
 }
 
+BouquetNameDescriptor::~BouquetNameDescriptor(void)
+{
+}
+
 const std::string &BouquetNameDescriptor::getBouquetName(void) const
 {
 	return bouquetName;
