@@ -19,7 +19,7 @@
  *
  */
 
-#include "byte_stream.h"
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/data_broadcast_id_descriptor.h>
 
 DataBroadcastIdDescriptor::DataBroadcastIdDescriptor(const uint8_t * const buffer) : Descriptor(buffer)

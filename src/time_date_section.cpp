@@ -19,8 +19,8 @@
  *
  */
 
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/time_date_section.h>
-#include "byte_stream.h"
 
 TimeAndDateSection::TimeAndDateSection(const uint8_t * const buffer) : ShortSection(buffer)
 {

@@ -19,7 +19,7 @@
  *
  */
 
-#include "byte_stream.h"
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/pdc_descriptor.h>
 
 PdcDescriptor::PdcDescriptor(const uint8_t * const buffer) : Descriptor(buffer)

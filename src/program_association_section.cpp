@@ -19,8 +19,8 @@
  *
  */
 
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/program_association_section.h>
-#include "byte_stream.h"
 
 NetworkAssociation::NetworkAssociation(const uint8_t * const buffer)
 {

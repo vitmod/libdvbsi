@@ -19,7 +19,7 @@
  *
  */
 
-#include "byte_stream.h"
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/service_move_descriptor.h>
 
 ServiceMoveDescriptor::ServiceMoveDescriptor(const uint8_t * const buffer) : Descriptor(buffer)

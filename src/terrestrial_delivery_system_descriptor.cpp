@@ -19,7 +19,7 @@
  *
  */
 
-#include "byte_stream.h"
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/terrestrial_delivery_system_descriptor.h>
 
 TerrestrialDeliverySystemDescriptor::TerrestrialDeliverySystemDescriptor(const uint8_t * const buffer) : Descriptor(buffer)

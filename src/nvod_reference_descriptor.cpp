@@ -19,7 +19,7 @@
  *
  */
 
-#include "byte_stream.h"
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/nvod_reference_descriptor.h>
 
 NvodReference::NvodReference(const uint8_t * const buffer)

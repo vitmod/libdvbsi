@@ -19,7 +19,7 @@
  *
  */
 
-#include "byte_stream.h"
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/ca_identifier_descriptor.h>
 
 CaIdentifierDescriptor::CaIdentifierDescriptor(const uint8_t * const buffer) : Descriptor(buffer)

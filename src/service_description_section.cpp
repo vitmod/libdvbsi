@@ -19,8 +19,8 @@
  *
  */
 
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/service_description_section.h>
-#include "byte_stream.h"
 
 ServiceDescription::ServiceDescription(const uint8_t * const buffer)
 {

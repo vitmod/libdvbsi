@@ -19,7 +19,7 @@
  *
  */
 
-#include "byte_stream.h"
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/subtitling_descriptor.h>
 
 Subtitling::Subtitling(const uint8_t * const buffer)

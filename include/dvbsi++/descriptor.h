@@ -22,9 +22,7 @@
 #ifndef __descriptor_h__
 #define __descriptor_h__
 
-#include <inttypes.h>
-#include <string>
-#include <vector>
+#include "compat.h"
 
 class Descriptor
 {

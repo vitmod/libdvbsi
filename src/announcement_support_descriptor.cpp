@@ -20,7 +20,7 @@
  */
 
 #include <dvbsi++/announcement_support_descriptor.h>
-#include "byte_stream.h"
+#include <dvbsi++/byte_stream.h>
 
 Announcement::Announcement(const uint8_t * const buffer)
 {

@@ -19,8 +19,8 @@
  *
  */
 
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/program_map_section.h>
-#include "byte_stream.h"
 
 ElementaryStreamInfo::ElementaryStreamInfo(const uint8_t * const buffer)
 {

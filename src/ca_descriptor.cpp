@@ -19,8 +19,8 @@
  *
  */
 
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/ca_descriptor.h>
-#include "byte_stream.h"
 
 CaDescriptor::CaDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {

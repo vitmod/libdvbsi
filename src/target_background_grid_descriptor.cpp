@@ -19,7 +19,7 @@
  *
  */
 
-#include "byte_stream.h"
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/target_background_grid_descriptor.h>
 
 TargetBackgroundGridDescriptor::TargetBackgroundGridDescriptor(const uint8_t * const buffer) : Descriptor(buffer)

@@ -20,7 +20,7 @@
  */
 
 #include <dvbsi++/bouquet_association_section.h>
-#include "byte_stream.h"
+#include <dvbsi++/byte_stream.h>
 
 BouquetAssociation::BouquetAssociation(const uint8_t * const buffer)
 {

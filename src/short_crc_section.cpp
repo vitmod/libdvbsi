@@ -19,8 +19,8 @@
  *
  */
 
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/short_crc_section.h>
-#include "byte_stream.h"
 
 ShortCrcSection::ShortCrcSection(const uint8_t * const buffer) : ShortSection(buffer)
 {

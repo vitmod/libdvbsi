@@ -19,8 +19,8 @@
  *
  */
 
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/long_section.h>
-#include "byte_stream.h"
 
 LongSection::LongSection(const uint8_t * const buffer) : ShortSection(buffer)
 {

@@ -20,7 +20,7 @@
  */
 
 #include <dvbsi++/application_signalling_descriptor.h>
-#include "byte_stream.h"
+#include <dvbsi++/byte_stream.h>
 
 ApplicationSignalling::ApplicationSignalling(const uint8_t * const buffer)
 {

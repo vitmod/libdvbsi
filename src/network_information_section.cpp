@@ -19,8 +19,8 @@
  *
  */
 
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/network_information_section.h>
-#include "byte_stream.h"
 
 TransportStreamInfo::TransportStreamInfo(const uint8_t * const buffer)
 {

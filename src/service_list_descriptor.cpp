@@ -19,7 +19,7 @@
  *
  */
 
-#include "byte_stream.h"
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/service_list_descriptor.h>
 
 ServiceListItem::ServiceListItem(const uint8_t * const buffer)

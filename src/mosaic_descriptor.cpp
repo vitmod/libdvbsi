@@ -19,7 +19,7 @@
  *
  */
 
-#include "byte_stream.h"
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/mosaic_descriptor.h>
 
 ElementaryCellField::ElementaryCellField (const uint8_t * const buffer)

@@ -22,8 +22,7 @@
 #ifndef __short_section_h__
 #define __short_section_h__
 
-#include <inttypes.h>
-#include <vector>
+#include "compat.h"
 #include "packet_id.h"
 #include "table_id.h"
 

@@ -20,7 +20,7 @@
  */
 
 #include <dvbsi++/application_information_section.h>
-#include "byte_stream.h"
+#include <dvbsi++/byte_stream.h>
 
 ApplicationIdentifier::ApplicationIdentifier(const uint8_t * const buffer)
 {

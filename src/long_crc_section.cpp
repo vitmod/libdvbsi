@@ -19,8 +19,8 @@
  *
  */
 
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/long_crc_section.h>
-#include "byte_stream.h"
 
 LongCrcSection::LongCrcSection(const uint8_t * const buffer) : LongSection(buffer)
 {

@@ -19,7 +19,7 @@
  *
  */
 
-#include "byte_stream.h"
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/cell_list_descriptor.h>
 
 Subcell::Subcell(const uint8_t * const buffer)

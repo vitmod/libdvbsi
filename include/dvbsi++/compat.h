@@ -19,28 +19,26 @@
  *
  */
 
-#include <dvbsi++/byte_stream.h>
-#include <dvbsi++/short_section.h>
+#ifndef __compat_h__
+#define __compat_h__
 
-ShortSection::ShortSection(const uint8_t * const buffer)
-{
-	tableId = buffer[0];
-	sectionSyntaxIndicator = (buffer[1] >> 7) & 0x01;
-	sectionLength = DVB_LENGTH(&buffer[1]);
-}
+#ifdef HAVE_BYTESWAP_H
+#include <byteswap.h>
+#endif
+#ifdef HAVE_ENDIAN_H
+#include <endian.h>
+#endif
+#ifdef HAVE_INTTYPES_H
+#include <inttypes.h>
+#endif
+#ifdef HAVE_STDINT_H
+#include <stdint.h>
+#endif
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
 
-uint8_t ShortSection::getTableId(void) const
-{
-	return tableId;
-}
+#include <string>
+#include <vector>
 
-uint8_t ShortSection::getSectionSyntaxIndicator(void) const
-{
-	return sectionSyntaxIndicator;
-}
-
-uint16_t ShortSection::getSectionLength(void) const
-{
-	return sectionLength;
-}
-
+#endif /* __compat_h__ */

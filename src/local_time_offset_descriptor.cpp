@@ -19,7 +19,7 @@
  *
  */
 
-#include "byte_stream.h"
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/local_time_offset_descriptor.h>
 
 LocalTimeOffset::LocalTimeOffset(const uint8_t * const buffer)

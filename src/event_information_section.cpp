@@ -19,8 +19,8 @@
  *
  */
 
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/event_information_section.h>
-#include "byte_stream.h"
 
 Event::Event(const uint8_t * const buffer)
 {

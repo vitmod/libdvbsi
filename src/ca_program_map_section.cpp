@@ -19,11 +19,8 @@
  *
  */
 
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>
-#endif
-
 #include <dvbsi++/ca_program_map_section.h>
+#include <dvbsi++/compat.h>
 #include <dvbsi++/descriptor_tag.h>
 
 CaLengthField::CaLengthField(const uint32_t length)

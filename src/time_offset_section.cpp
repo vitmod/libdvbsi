@@ -19,8 +19,8 @@
  *
  */
 
+#include <dvbsi++/byte_stream.h>
 #include <dvbsi++/time_offset_section.h>
-#include "byte_stream.h"
 
 TimeOffsetSection::TimeOffsetSection(const uint8_t * const buffer) : ShortCrcSection(buffer)
 {
