@@ -35,6 +35,7 @@ class ShortSection
 
 	public:
 		ShortSection(const uint8_t * const buffer);
+		virtual ~ShortSection();
 
 		static const uint8_t CRC32 = 0;
 		static const uint16_t LENGTH = 1024;

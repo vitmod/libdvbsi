@@ -32,6 +32,7 @@ class Descriptor
 
 	public:
 		Descriptor(const uint8_t * const buffer);
+		virtual ~Descriptor();
 
 		uint8_t getTag(void) const;
 		uint8_t getLength(void) const;
