@@ -40,7 +40,7 @@ const std::string &MultilingualBouquetName::getBouquetName(void) const
 
 MultilingualBouquetNameDescriptor::MultilingualBouquetNameDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	for (size_t i = 0; i < descriptorLength; i += buffer[i + 3] + 2)
+	for (size_t i = 0; i < descriptorLength; i += buffer[i + 5] + 4)
 		multilingualBouquetNames.push_back(new MultilingualBouquetName(&buffer[i + 2]));
 }
 
