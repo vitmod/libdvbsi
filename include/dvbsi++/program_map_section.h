@@ -49,7 +49,6 @@ typedef ElementaryStreamInfoVector::const_iterator ElementaryStreamInfoConstIter
 class ProgramMapSection : public LongCrcSection, public DescriptorContainer
 {
 	protected:
-		unsigned programNumber			: 16;
 		unsigned pcrPid					: 13;
 		unsigned programInfoLength			: 12;
 		ElementaryStreamInfoVector esInfo;
@@ -61,7 +60,6 @@ class ProgramMapSection : public LongCrcSection, public DescriptorContainer
 		static const enum TableId TID = TID_PMT;
 		static const uint32_t TIMEOUT = 600;
 
-		uint16_t getProgramNumber(void) const;
 		uint16_t getPcrPid(void) const;
 		const ElementaryStreamInfoVector *getEsInfo(void) const;
 
