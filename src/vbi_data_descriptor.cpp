@@ -51,7 +51,7 @@ VbiDataService::VbiDataService(const uint8_t * const buffer)
 	case 0x05:
 	case 0x06:
 	case 0x07:
-		for (i = 0; i < dataServiceDescriptorLength; ++i);
+		for (i = 0; i < dataServiceDescriptorLength; ++i)
 			vbiDataLines.push_back(new VbiDataLine(&buffer[i + 2]));
 		break;
 
