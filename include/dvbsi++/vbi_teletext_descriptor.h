@@ -41,20 +41,20 @@ class VbiTeletext
 		uint8_t getTeletextPageNumber(void) const;
 };
 
-typedef std::vector<VbiTeletext *> VbiTeletextVector;
-typedef VbiTeletextVector::iterator VbiTeletextIterator;
-typedef VbiTeletextVector::const_iterator VbiTeletextConstIterator;
+typedef std::list<VbiTeletext *> VbiTeletextList;
+typedef VbiTeletextList::iterator VbiTeletextIterator;
+typedef VbiTeletextList::const_iterator VbiTeletextConstIterator;
 
 class VbiTeletextDescriptor : public Descriptor
 {
 	protected:
-		VbiTeletextVector vbiTeletexts;
+		VbiTeletextList vbiTeletexts;
 
 	public:
 		VbiTeletextDescriptor(const uint8_t * const buffer);
 		~VbiTeletextDescriptor(void);
 
-		const VbiTeletextVector *getVbiTeletexts(void) const;
+		const VbiTeletextList *getVbiTeletexts(void) const;
 };
 
 #endif /* __vbi_teletext_descriptor_h__ */

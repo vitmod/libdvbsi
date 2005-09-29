@@ -100,7 +100,7 @@ uint16_t Cell::getCellExtendOfLongtitude(void) const
 	return cellExtendOfLongtitude;
 }
 
-const SubcellVector *Cell::getSubcells(void) const
+const SubcellList *Cell::getSubcells(void) const
 {
 	return &subcells;
 }
@@ -117,7 +117,7 @@ CellListDescriptor::~CellListDescriptor(void)
 		delete *i;
 }
 
-const CellVector *CellListDescriptor::getCells(void) const
+const CellList *CellListDescriptor::getCells(void) const
 {
 	return &cells;
 }

@@ -57,11 +57,11 @@ ContentDescriptor::ContentDescriptor(const uint8_t * const buffer) : Descriptor(
 
 ContentDescriptor::~ContentDescriptor(void)
 {
-	for (ContentClassificationVector::iterator i = classifications.begin(); i != classifications.end(); ++i)
+	for (ContentClassificationList::iterator i = classifications.begin(); i != classifications.end(); ++i)
 		delete *i;
 }
 
-const ContentClassificationVector *ContentDescriptor::getClassifications(void) const
+const ContentClassificationList *ContentDescriptor::getClassifications(void) const
 {
 	return &classifications;
 }

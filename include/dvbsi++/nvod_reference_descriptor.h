@@ -39,20 +39,20 @@ class NvodReference
 		uint16_t getServiceId(void) const;
 };
 
-typedef std::vector<NvodReference *> NvodReferenceVector;
-typedef NvodReferenceVector::iterator NvodReferenceIterator;
-typedef NvodReferenceVector::const_iterator NvodReferenceConstIterator;
+typedef std::list<NvodReference *> NvodReferenceList;
+typedef NvodReferenceList::iterator NvodReferenceIterator;
+typedef NvodReferenceList::const_iterator NvodReferenceConstIterator;
 
 class NvodReferenceDescriptor : public Descriptor
 {
 	protected:
-		NvodReferenceVector nvodReferences;
+		NvodReferenceList nvodReferences;
 
 	public:
 		NvodReferenceDescriptor(const uint8_t * const buffer);
 		~NvodReferenceDescriptor(void);
 
-		const NvodReferenceVector* getNvodReferences(void) const;
+		const NvodReferenceList* getNvodReferences(void) const;
 };
 
 #endif /* __nvod_reference_descriptor_h__ */

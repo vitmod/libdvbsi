@@ -79,7 +79,12 @@ uint16_t ServiceDescriptionSection::getOriginalNetworkId(void) const
 	return originalNetworkId;
 }
 
-const ServiceDescriptionVector *ServiceDescriptionSection::getDescriptions(void) const
+uint16_t ServiceDescriptionSection::getTransportStreamId(void) const
+{
+	return getTableIdExtension();
+}
+
+const ServiceDescriptionList *ServiceDescriptionSection::getDescriptions(void) const
 {
 	return &description;
 }

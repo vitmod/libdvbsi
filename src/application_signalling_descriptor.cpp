@@ -50,7 +50,7 @@ ApplicationSignallingDescriptor::~ApplicationSignallingDescriptor(void)
 		delete *i;
 }
 
-const ApplicationSignallingVector *ApplicationSignallingDescriptor::getApplicationSignallings(void) const
+const ApplicationSignallingList *ApplicationSignallingDescriptor::getApplicationSignallings(void) const
 {
 	return &applicationSignallings;
 }

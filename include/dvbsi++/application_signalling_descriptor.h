@@ -37,20 +37,20 @@ class ApplicationSignalling
 		uint8_t getAitVersionNumber(void) const;
 };
 
-typedef std::vector<ApplicationSignalling *> ApplicationSignallingVector;
-typedef ApplicationSignallingVector::iterator ApplicationSignallingIterator;
-typedef ApplicationSignallingVector::const_iterator ApplicationSignallingConstIterator;
+typedef std::list<ApplicationSignalling *> ApplicationSignallingList;
+typedef ApplicationSignallingList::iterator ApplicationSignallingIterator;
+typedef ApplicationSignallingList::const_iterator ApplicationSignallingConstIterator;
 
 class ApplicationSignallingDescriptor : public Descriptor
 {
 	protected:
-		ApplicationSignallingVector applicationSignallings;
+		ApplicationSignallingList applicationSignallings;
 
 	public:
 		ApplicationSignallingDescriptor(const uint8_t * const buffer);
 		~ApplicationSignallingDescriptor(void);
 
-		const ApplicationSignallingVector *getApplicationSignallings(void) const;
+		const ApplicationSignallingList *getApplicationSignallings(void) const;
 };
 
 #endif /* __application_signalling_descriptor_h__ */

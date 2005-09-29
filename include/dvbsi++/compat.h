@@ -39,6 +39,6 @@
 #endif
 
 #include <string>
-#include <vector>
+#include <list>
 
 #endif /* __compat_h__ */

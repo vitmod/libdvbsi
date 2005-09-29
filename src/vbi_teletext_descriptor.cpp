@@ -61,7 +61,7 @@ VbiTeletextDescriptor::~VbiTeletextDescriptor(void)
 		delete *i;
 }
 
-const VbiTeletextVector *VbiTeletextDescriptor::getVbiTeletexts(void) const
+const VbiTeletextList *VbiTeletextDescriptor::getVbiTeletexts(void) const
 {
 	return &vbiTeletexts;
 }

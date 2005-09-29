@@ -97,7 +97,7 @@ uint16_t AnnouncementSupportDescriptor::getAnnouncementSupportIndicator(void) co
 	return announcementSupportIndicator;
 }
 
-const AnnouncementVector *AnnouncementSupportDescriptor::getAnnouncements(void) const
+const AnnouncementList *AnnouncementSupportDescriptor::getAnnouncements(void) const
 {
 	return &announcements;
 }

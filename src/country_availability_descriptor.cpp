@@ -37,7 +37,7 @@ uint8_t CountryAvailabilityDescriptor::getCountryAvailabilityFlag(void) const
 	return countryAvailabilityFlag;
 }
 
-const CountryCodeVector *CountryAvailabilityDescriptor::getCountryCodes(void) const
+const CountryCodeList *CountryAvailabilityDescriptor::getCountryCodes(void) const
 {
 	return &countryCodes;
 }

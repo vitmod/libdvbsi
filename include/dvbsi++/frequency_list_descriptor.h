@@ -24,21 +24,21 @@
 
 #include "descriptor.h"
 
-typedef std::vector<uint32_t> CentreFrequencyVector;
-typedef CentreFrequencyVector::iterator CentreFrequencyIterator;
-typedef CentreFrequencyVector::const_iterator CentreFrequencyConstIterator;
+typedef std::list<uint32_t> CentreFrequencyList;
+typedef CentreFrequencyList::iterator CentreFrequencyIterator;
+typedef CentreFrequencyList::const_iterator CentreFrequencyConstIterator;
 
 class FrequencyListDescriptor : public Descriptor
 {
 	protected:
 		unsigned codingType				: 2;
-		CentreFrequencyVector centreFrequencies;
+		CentreFrequencyList centreFrequencies;
 
 	public:
 		FrequencyListDescriptor(const uint8_t * const buffer);
 
 		uint8_t getCodingType(void) const;
-		const CentreFrequencyVector *getCentreFrequencies(void) const;
+		const CentreFrequencyList *getCentreFrequencies(void) const;
 };
 
 #endif /* __frequency_list_descriptor_h__ */

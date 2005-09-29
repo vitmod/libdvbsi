@@ -28,7 +28,7 @@ CaIdentifierDescriptor::CaIdentifierDescriptor(const uint8_t * const buffer) : D
 		caSystemIds.push_back(UINT16(&buffer[i + 2]));
 }
 
-const CaSystemIdVector *CaIdentifierDescriptor::getCaSystemIds(void) const
+const CaSystemIdList *CaIdentifierDescriptor::getCaSystemIds(void) const
 {
 	return &caSystemIds;
 }

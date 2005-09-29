@@ -35,8 +35,8 @@ class ConditionalAccessSection : public LongCrcSection, public DescriptorContain
 		static const uint32_t TIMEOUT = 200;
 };
 
-typedef std::vector<ConditionalAccessSection *> ConditionalAccessSectionVector;
-typedef ConditionalAccessSectionVector::iterator ConditionalAccessSectionIterator;
-typedef ConditionalAccessSectionVector::const_iterator ConditionalAccessSectionConstIterator;
+typedef std::list<ConditionalAccessSection *> ConditionalAccessSectionList;
+typedef ConditionalAccessSectionList::iterator ConditionalAccessSectionIterator;
+typedef ConditionalAccessSectionList::const_iterator ConditionalAccessSectionConstIterator;
 
 #endif /* __ca_section_h__ */

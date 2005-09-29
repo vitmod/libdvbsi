@@ -71,7 +71,7 @@ uint8_t VbiDataService::getDataServiceId(void) const
 	return dataServiceId;
 }
 
-const VbiDataLineVector *VbiDataService::getVbiDataLines(void) const
+const VbiDataLineList *VbiDataService::getVbiDataLines(void) const
 {
 	return &vbiDataLines;
 }
@@ -88,7 +88,7 @@ VbiDataDescriptor::~VbiDataDescriptor(void)
 		delete *i;
 }
 
-const VbiDataServiceVector *VbiDataDescriptor::getVbiDataServices(void) const
+const VbiDataServiceList *VbiDataDescriptor::getVbiDataServices(void) const
 {
 	return &vbiDataServices;
 }

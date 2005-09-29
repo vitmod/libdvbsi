@@ -64,7 +64,7 @@ uint32_t CellFrequencyLink::getFrequency(void) const
 	return frequency;
 }
 
-const SubcellInfoVector *CellFrequencyLink::getSubcells(void) const
+const SubcellInfoList *CellFrequencyLink::getSubcells(void) const
 {
 	return &subcells;
 }
@@ -81,7 +81,7 @@ CellFrequencyLinkDescriptor::~CellFrequencyLinkDescriptor(void)
 		delete *i;
 }
 
-const CellFrequencyLinkVector *CellFrequencyLinkDescriptor::getCellFrequencyLinks(void) const
+const CellFrequencyLinkList *CellFrequencyLinkDescriptor::getCellFrequencyLinks(void) const
 {
 	return &cellFrequencyLinks;
 }

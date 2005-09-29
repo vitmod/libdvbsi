@@ -56,7 +56,7 @@ NvodReferenceDescriptor::~NvodReferenceDescriptor(void)
 		delete *i;
 }
 
-const NvodReferenceVector *NvodReferenceDescriptor::getNvodReferences(void) const
+const NvodReferenceList *NvodReferenceDescriptor::getNvodReferences(void) const
 {
 	return &nvodReferences;
 }

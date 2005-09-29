@@ -43,20 +43,20 @@ class MultilingualServiceName
 	friend class MultilingualServiceNameDescriptor;
 };
 
-typedef std::vector<MultilingualServiceName *> MultilingualServiceNameVector;
-typedef MultilingualServiceNameVector::iterator MultilingualServiceNameIterator;
-typedef MultilingualServiceNameVector::const_iterator MultilingualServiceNameConstIterator;
+typedef std::list<MultilingualServiceName *> MultilingualServiceNameList;
+typedef MultilingualServiceNameList::iterator MultilingualServiceNameIterator;
+typedef MultilingualServiceNameList::const_iterator MultilingualServiceNameConstIterator;
 
 class MultilingualServiceNameDescriptor : public Descriptor
 {
 	protected:
-		MultilingualServiceNameVector multilingualServiceNames;
+		MultilingualServiceNameList multilingualServiceNames;
 
 	public:
 		MultilingualServiceNameDescriptor(const uint8_t * const buffer);
 		~MultilingualServiceNameDescriptor(void);
 
-		const MultilingualServiceNameVector *getMultilingualServiceNames(void) const;
+		const MultilingualServiceNameList *getMultilingualServiceNames(void) const;
 };
 
 #endif /* __multilingual_service_name_descriptor_h__ */

@@ -68,12 +68,12 @@ ProgramAssociationSection::~ProgramAssociationSection(void)
 		delete *i;
 }
 
-const NetworkAssociationVector *ProgramAssociationSection::getNetworks(void) const
+const NetworkAssociationList *ProgramAssociationSection::getNetworks(void) const
 {
 	return &networks;
 }
 
-const ProgramAssociationVector *ProgramAssociationSection::getPrograms(void) const
+const ProgramAssociationList *ProgramAssociationSection::getPrograms(void) const
 {
 	return &programs;
 }

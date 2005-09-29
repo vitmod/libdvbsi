@@ -42,16 +42,16 @@ class ElementaryStreamInfo : public DescriptorContainer
 
 };
 
-typedef std::vector<ElementaryStreamInfo *> ElementaryStreamInfoVector;
-typedef ElementaryStreamInfoVector::iterator ElementaryStreamInfoIterator;
-typedef ElementaryStreamInfoVector::const_iterator ElementaryStreamInfoConstIterator;
+typedef std::list<ElementaryStreamInfo *> ElementaryStreamInfoList;
+typedef ElementaryStreamInfoList::iterator ElementaryStreamInfoIterator;
+typedef ElementaryStreamInfoList::const_iterator ElementaryStreamInfoConstIterator;
 
 class ProgramMapSection : public LongCrcSection, public DescriptorContainer
 {
 	protected:
 		unsigned pcrPid					: 13;
 		unsigned programInfoLength			: 12;
-		ElementaryStreamInfoVector esInfo;
+		ElementaryStreamInfoList esInfo;
 
 	public:
 		ProgramMapSection(const uint8_t * const buffer);
@@ -61,13 +61,14 @@ class ProgramMapSection : public LongCrcSection, public DescriptorContainer
 		static const uint32_t TIMEOUT = 600;
 
 		uint16_t getPcrPid(void) const;
-		const ElementaryStreamInfoVector *getEsInfo(void) const;
+		uint16_t getProgramNumber(void) const;
+		const ElementaryStreamInfoList *getEsInfo(void) const;
 
 	friend class CaProgramMapSection;
 };
 
-typedef std::vector<ProgramMapSection *> ProgramMapSectionVector;
-typedef ProgramMapSectionVector::iterator ProgramMapSectionIterator;
-typedef ProgramMapSectionVector::const_iterator ProgramMapSectionConstIterator;
+typedef std::list<ProgramMapSection *> ProgramMapSectionList;
+typedef ProgramMapSectionList::iterator ProgramMapSectionIterator;
+typedef ProgramMapSectionList::const_iterator ProgramMapSectionConstIterator;
 
 #endif /* __program_map_section_h__ */

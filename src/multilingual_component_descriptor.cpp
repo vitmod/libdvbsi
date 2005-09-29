@@ -57,7 +57,7 @@ uint8_t MultilingualComponentDescriptor::getComponentTag(void) const
 	return componentTag;
 }
 
-const MultilingualComponentVector *MultilingualComponentDescriptor::getMultilingualComponents(void) const
+const MultilingualComponentList *MultilingualComponentDescriptor::getMultilingualComponents(void) const
 {
 	return &multilingualComponents;
 }

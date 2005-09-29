@@ -27,7 +27,7 @@
 class ConditionalAccessMessageSection : public ShortSection
 {
 	protected:
-		std::vector<uint8_t> caDataByte;
+		std::list<uint8_t> caDataByte;
 
 	public:
 		ConditionalAccessMessageSection(const uint8_t * const buffer);
@@ -36,8 +36,8 @@ class ConditionalAccessMessageSection : public ShortSection
 		static const enum TableId TID = TID_CAMT_ECM_0;
 };
 
-typedef std::vector<ConditionalAccessMessageSection *> ConditionalAccessMessageSectionVector;
-typedef ConditionalAccessMessageSectionVector::iterator ConditionalAccessMessageSectionIterator;
-typedef ConditionalAccessMessageSectionVector::const_iterator ConditionalAccessMessageSectionConstIterator;
+typedef std::list<ConditionalAccessMessageSection *> ConditionalAccessMessageSectionList;
+typedef ConditionalAccessMessageSectionList::iterator ConditionalAccessMessageSectionIterator;
+typedef ConditionalAccessMessageSectionList::const_iterator ConditionalAccessMessageSectionConstIterator;
 
 #endif /* __ca_message_section_h__ */

@@ -24,19 +24,19 @@
 
 #include "descriptor.h"
 
-typedef std::vector<uint16_t> CaSystemIdVector;
-typedef CaSystemIdVector::iterator CaSystemIdIterator;
-typedef CaSystemIdVector::const_iterator CaSystemIdConstIterator;
+typedef std::list<uint16_t> CaSystemIdList;
+typedef CaSystemIdList::iterator CaSystemIdIterator;
+typedef CaSystemIdList::const_iterator CaSystemIdConstIterator;
 
 class CaIdentifierDescriptor : public Descriptor
 {
 	protected:
-		CaSystemIdVector caSystemIds;
+		CaSystemIdList caSystemIds;
 
 	public:
 		CaIdentifierDescriptor(const uint8_t * const buffer);
 
-		const CaSystemIdVector *getCaSystemIds(void) const;
+		const CaSystemIdList *getCaSystemIds(void) const;
 };
 
 #endif /* __ca_identifier_descriptor_h__ */

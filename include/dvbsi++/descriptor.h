@@ -32,7 +32,7 @@ class Descriptor
 
 	public:
 		Descriptor(const uint8_t * const buffer);
-		virtual ~Descriptor();
+		virtual ~Descriptor() { };
 
 		uint8_t getTag(void) const;
 		uint8_t getLength(void) const;
@@ -40,8 +40,8 @@ class Descriptor
 		size_t writeToBuffer(uint8_t * const buffer) const;
 };
 
-typedef std::vector<Descriptor *> DescriptorVector;
-typedef DescriptorVector::iterator DescriptorIterator;
-typedef DescriptorVector::const_iterator DescriptorConstIterator;
+typedef std::list<Descriptor *> DescriptorList;
+typedef DescriptorList::iterator DescriptorIterator;
+typedef DescriptorList::const_iterator DescriptorConstIterator;
 
 #endif /* __descriptor_h__ */

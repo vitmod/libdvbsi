@@ -61,7 +61,7 @@ MultilingualServiceNameDescriptor::~MultilingualServiceNameDescriptor(void)
 		delete *i;
 }
 
-const MultilingualServiceNameVector *MultilingualServiceNameDescriptor::getMultilingualServiceNames(void) const
+const MultilingualServiceNameList *MultilingualServiceNameDescriptor::getMultilingualServiceNames(void) const
 {
 	return &multilingualServiceNames;
 }

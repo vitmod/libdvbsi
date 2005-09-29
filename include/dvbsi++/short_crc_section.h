@@ -37,8 +37,8 @@ class ShortCrcSection : public ShortSection
 		uint32_t getCrc32(void) const;
 };
 
-typedef std::vector<ShortCrcSection *> ShortCrcSectionVector;
-typedef ShortCrcSectionVector::iterator ShortCrcSectionIterator;
-typedef ShortCrcSectionVector::const_iterator ShortCrcSectionConstIterator;
+typedef std::list<ShortCrcSection *> ShortCrcSectionList;
+typedef ShortCrcSectionList::iterator ShortCrcSectionIterator;
+typedef ShortCrcSectionList::const_iterator ShortCrcSectionConstIterator;
 
 #endif /* __short_crc_section_h__ */

@@ -74,7 +74,7 @@ uint8_t LinkageDescriptor::getLinkageType(void) const
 	return linkageType;
 }
 
-const PrivateDataByteVector *LinkageDescriptor::getPrivateDataBytes(void) const
+const PrivateDataByteList *LinkageDescriptor::getPrivateDataBytes(void) const
 {
 	return &privateDataBytes;
 }

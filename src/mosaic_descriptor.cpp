@@ -77,7 +77,7 @@ uint8_t MosaicCell::getLogicalCellPresentationInfo(void) const
 	return logicalCellPresentationInfo;
 }
 
-const ElementaryCellFieldVector *MosaicCell::getElementaryCellFields(void) const
+const ElementaryCellFieldList *MosaicCell::getElementaryCellFields(void) const
 {
 	return &elementaryCellFields;
 }
@@ -160,7 +160,7 @@ uint8_t MosaicDescriptor::getNumberOfVerticalElementaryCells(void) const
 	return numberOfVerticalElementaryCells;
 }
 
-const MosaicCellVector *MosaicDescriptor::getMosaicCells(void) const
+const MosaicCellList *MosaicDescriptor::getMosaicCells(void) const
 {
 	return &mosaicCells;
 }

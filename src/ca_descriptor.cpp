@@ -41,7 +41,7 @@ uint16_t CaDescriptor::getCaPid(void) const
 	return caPid;
 }
 
-const PrivateDataByteVector *CaDescriptor::getPrivateDataBytes(void) const
+const PrivateDataByteList *CaDescriptor::getPrivateDataBytes(void) const
 {
 	return &privateDataBytes;
 }

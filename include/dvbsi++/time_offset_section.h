@@ -43,8 +43,8 @@ class TimeOffsetSection : public ShortCrcSection, public DescriptorContainer
 		uint32_t getUtcTimeBcd(void) const;
 };
 
-typedef std::vector<TimeOffsetSection *> TimeOffsetSectionVector;
-typedef TimeOffsetSectionVector::iterator TimeOffsetSectionIterator;
-typedef TimeOffsetSectionVector::const_iterator TimeOffsetSectionConstIterator;
+typedef std::list<TimeOffsetSection *> TimeOffsetSectionList;
+typedef TimeOffsetSectionList::iterator TimeOffsetSectionIterator;
+typedef TimeOffsetSectionList::const_iterator TimeOffsetSectionConstIterator;
 
 #endif /* __time_offset_section_h__ */

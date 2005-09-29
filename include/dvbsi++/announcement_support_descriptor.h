@@ -45,22 +45,22 @@ class Announcement
 		uint8_t getComponentTag(void) const;
 };
 
-typedef std::vector<Announcement *> AnnouncementVector;
-typedef AnnouncementVector::iterator AnnouncementIterator;
-typedef AnnouncementVector::const_iterator AnnouncementConstIterator;
+typedef std::list<Announcement *> AnnouncementList;
+typedef AnnouncementList::iterator AnnouncementIterator;
+typedef AnnouncementList::const_iterator AnnouncementConstIterator;
 
 class AnnouncementSupportDescriptor : public Descriptor
 {
 	protected:
 		unsigned announcementSupportIndicator		: 16;
-		AnnouncementVector announcements;
+		AnnouncementList announcements;
 
 	public:
 		AnnouncementSupportDescriptor(const uint8_t * const buffer);
 		~AnnouncementSupportDescriptor(void);
 
 		uint16_t getAnnouncementSupportIndicator(void) const;
-		const AnnouncementVector *getAnnouncements(void) const;
+		const AnnouncementList *getAnnouncements(void) const;
 };
 
 #endif /* __announcement_support_descriptor_h__ */

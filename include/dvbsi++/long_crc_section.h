@@ -37,8 +37,8 @@ class LongCrcSection : public LongSection
 		uint32_t getCrc32(void) const;
 };
 
-typedef std::vector<LongCrcSection *> LongCrcSectionVector;
-typedef LongCrcSectionVector::iterator LongCrcSectionIterator;
-typedef LongCrcSectionVector::const_iterator LongCrcSectionConstIterator;
+typedef std::list<LongCrcSection *> LongCrcSectionList;
+typedef LongCrcSectionList::iterator LongCrcSectionIterator;
+typedef LongCrcSectionList::const_iterator LongCrcSectionConstIterator;
 
 #endif /* __long_crc_section_h__ */

@@ -38,20 +38,20 @@ class MultilingualNetworkName
 		const std::string &getNetworkName(void) const;
 };
 
-typedef std::vector<MultilingualNetworkName *> MultilingualNetworkNameVector;
-typedef MultilingualNetworkNameVector::iterator MultilingualNetworkNameIterator;
-typedef MultilingualNetworkNameVector::const_iterator MultilingualNetworkNameConstIterator;
+typedef std::list<MultilingualNetworkName *> MultilingualNetworkNameList;
+typedef MultilingualNetworkNameList::iterator MultilingualNetworkNameIterator;
+typedef MultilingualNetworkNameList::const_iterator MultilingualNetworkNameConstIterator;
 
 class MultilingualNetworkNameDescriptor : public Descriptor
 {
 	protected:
-		MultilingualNetworkNameVector multilingualNetworkNames;
+		MultilingualNetworkNameList multilingualNetworkNames;
 
 	public:
 		MultilingualNetworkNameDescriptor(const uint8_t * const buffer);
 		~MultilingualNetworkNameDescriptor(void);
 
-		const MultilingualNetworkNameVector *getMultilingualNetworkNames(void) const;
+		const MultilingualNetworkNameList *getMultilingualNetworkNames(void) const;
 };
 
 #endif /* __multilingual_network_name_descriptor_h__ */

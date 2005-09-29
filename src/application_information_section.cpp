@@ -69,7 +69,7 @@ ApplicationInformationSection::~ApplicationInformationSection(void)
 		delete *i;
 }
 
-const ApplicationInformationVector *ApplicationInformationSection::getApplicationInformation(void) const
+const ApplicationInformationList *ApplicationInformationSection::getApplicationInformation(void) const
 {
 	return &applicationInformation;
 }

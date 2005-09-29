@@ -78,7 +78,7 @@ const std::string &ExtendedEventDescriptor::getIso639LanguageCode(void) const
 	return iso639LanguageCode;
 }
 
-const ExtendedEventVector *ExtendedEventDescriptor::getItems(void) const
+const ExtendedEventList *ExtendedEventDescriptor::getItems(void) const
 {
 	return &items;
 }

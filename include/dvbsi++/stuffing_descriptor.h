@@ -27,7 +27,7 @@
 class StuffingDescriptor : public Descriptor
 {
 	protected:
-		std::vector<uint8_t> stuffingByte;
+		std::list<uint8_t> stuffingByte;
 
 	public:
 		StuffingDescriptor(const uint8_t * const buffer);

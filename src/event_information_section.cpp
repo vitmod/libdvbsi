@@ -103,7 +103,7 @@ uint8_t EventInformationSection::getLastTableId(void) const
 	return lastTableId;
 }
 
-const EventVector *EventInformationSection::getEvents(void) const
+const EventList *EventInformationSection::getEvents(void) const
 {
 	return &events;
 }

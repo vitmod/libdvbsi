@@ -24,21 +24,21 @@
 
 #include "descriptor.h"
 
-typedef std::vector<uint8_t> IdSelectorByteVector;
-typedef IdSelectorByteVector::iterator IdSelectorByteIterator;
-typedef IdSelectorByteVector::const_iterator IdSelectorByteConstIterator;
+typedef std::list<uint8_t> IdSelectorByteList;
+typedef IdSelectorByteList::iterator IdSelectorByteIterator;
+typedef IdSelectorByteList::const_iterator IdSelectorByteConstIterator;
 
 class DataBroadcastIdDescriptor : public Descriptor
 {
 	protected:
 		unsigned dataBroadcastId			: 16;
-		IdSelectorByteVector idSelectorBytes;
+		IdSelectorByteList idSelectorBytes;
 
 	public:
 		DataBroadcastIdDescriptor(const uint8_t * const buffer);
 
 		uint16_t getDataBroadcastId(void) const;
-		const IdSelectorByteVector *getIdSelectorBytes(void) const;
+		const IdSelectorByteList *getIdSelectorBytes(void) const;
 };
 
 #endif /* __data_broadcast_id_descriptor_h__ */

@@ -37,12 +37,12 @@ class DescriptorContainer
 		void descriptorSi(const uint8_t * const buffer);
 		void descriptorCarousel(const uint8_t * const buffer);
 		void descriptorMhp(const uint8_t * const buffer);
-		DescriptorVector descriptorVector;
+		DescriptorList descriptorList;
 
 	public:
 		~DescriptorContainer(void);
 
-		const DescriptorVector *getDescriptors(void) const;
+		const DescriptorList *getDescriptors(void) const;
 };
 
 #endif /* __descriptor_container_h__ */

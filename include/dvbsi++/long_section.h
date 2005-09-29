@@ -52,8 +52,8 @@ class LongSection : public ShortSection
 		bool operator!= (const LongSection &t) const;
 };
 
-typedef std::vector<LongSection *> LongSectionVector;
-typedef LongSectionVector::iterator LongSectionIterator;
-typedef LongSectionVector::const_iterator LongSectionConstIterator;
+typedef std::list<LongSection *> LongSectionList;
+typedef LongSectionList::iterator LongSectionIterator;
+typedef LongSectionList::const_iterator LongSectionConstIterator;
 
 #endif /* __long_section_h__ */

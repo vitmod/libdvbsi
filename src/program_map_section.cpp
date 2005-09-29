@@ -59,7 +59,12 @@ uint16_t ProgramMapSection::getPcrPid(void) const
 	return pcrPid;
 }
 
-const ElementaryStreamInfoVector *ProgramMapSection::getEsInfo(void) const
+uint16_t ProgramMapSection::getProgramNumber(void) const
+{
+	return getTableIdExtension();
+}
+
+const ElementaryStreamInfoList *ProgramMapSection::getEsInfo(void) const
 {
 	return &esInfo;
 }

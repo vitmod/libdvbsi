@@ -46,7 +46,7 @@ uint8_t DataBroadcastDescriptor::getComponentTag(void) const
 	return componentTag;
 }
 
-const selectorByteVector *DataBroadcastDescriptor::getSelectorBytes(void) const
+const selectorByteList *DataBroadcastDescriptor::getSelectorBytes(void) const
 {
 	return &selectorBytes;
 }

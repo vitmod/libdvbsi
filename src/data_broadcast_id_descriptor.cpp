@@ -35,7 +35,7 @@ uint16_t DataBroadcastIdDescriptor::getDataBroadcastId(void) const
 	return dataBroadcastId;
 }
 
-const IdSelectorByteVector *DataBroadcastIdDescriptor::getIdSelectorBytes(void) const
+const IdSelectorByteList *DataBroadcastIdDescriptor::getIdSelectorBytes(void) const
 {
 	return &idSelectorBytes;
 }

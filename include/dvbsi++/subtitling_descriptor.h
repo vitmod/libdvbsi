@@ -41,20 +41,20 @@ class Subtitling
 		uint16_t getAncillaryPageId(void) const;
 };
 
-typedef std::vector<Subtitling *> SubtitlingVector;
-typedef SubtitlingVector::iterator SubtitlingIterator;
-typedef SubtitlingVector::const_iterator SubtitlingConstIterator;
+typedef std::list<Subtitling *> SubtitlingList;
+typedef SubtitlingList::iterator SubtitlingIterator;
+typedef SubtitlingList::const_iterator SubtitlingConstIterator;
 
 class SubtitlingDescriptor : public Descriptor
 {
 	protected:
-		SubtitlingVector subtitlings;
+		SubtitlingList subtitlings;
 
 	public:
 		SubtitlingDescriptor(const uint8_t * const buffer);
 		~SubtitlingDescriptor(void);
 
-		const SubtitlingVector *getSubtitlings(void) const;
+		const SubtitlingList *getSubtitlings(void) const;
 };
 
 #endif /* __subtitling_descriptor_h__ */

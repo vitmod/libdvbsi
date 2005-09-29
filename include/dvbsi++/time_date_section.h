@@ -41,8 +41,8 @@ class TimeAndDateSection : public ShortSection
 		uint32_t getUtcTimeBcd(void) const;
 };
 
-typedef std::vector<TimeAndDateSection *> TimeAndDateSectionVector;
-typedef TimeAndDateSectionVector::iterator TimeAndDateSectionIterator;
-typedef TimeAndDateSectionVector::const_iterator TimeAndDateSectionConstIterator;
+typedef std::list<TimeAndDateSection *> TimeAndDateSectionList;
+typedef TimeAndDateSectionList::iterator TimeAndDateSectionIterator;
+typedef TimeAndDateSectionList::const_iterator TimeAndDateSectionConstIterator;
 
 #endif /* __time_date_section_h__ */

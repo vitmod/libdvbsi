@@ -24,9 +24,9 @@
 
 #include "descriptor.h"
 
-typedef std::vector<uint8_t> selectorByteVector;
-typedef selectorByteVector::iterator selectorByteIterator;
-typedef selectorByteVector::const_iterator selectorByteConstIterator;
+typedef std::list<uint8_t> selectorByteList;
+typedef selectorByteList::iterator selectorByteIterator;
+typedef selectorByteList::const_iterator selectorByteConstIterator;
 
 class DataBroadcastDescriptor : public Descriptor
 {
@@ -34,7 +34,7 @@ class DataBroadcastDescriptor : public Descriptor
 		unsigned dataBroadcastId			: 16;
 		unsigned componentTag				: 8;
 		unsigned selectorLength				: 8;
-		selectorByteVector selectorBytes;
+		selectorByteList selectorBytes;
 		std::string iso639LanguageCode;
 		unsigned textLength				: 8;
 		std::string text;
@@ -44,7 +44,7 @@ class DataBroadcastDescriptor : public Descriptor
 
 		uint16_t getDataBroadcastId(void) const;
 		uint8_t getComponentTag(void) const;
-		const selectorByteVector *getSelectorBytes(void) const;
+		const selectorByteList *getSelectorBytes(void) const;
 		const std::string &getIso639LanguageCode(void) const;
 		const std::string &getText(void) const;
 };

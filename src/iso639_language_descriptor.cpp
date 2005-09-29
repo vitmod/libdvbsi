@@ -49,7 +49,7 @@ Iso639LanguageDescriptor::~Iso639LanguageDescriptor(void)
 		delete *i;
 }
 
-const Iso639LanguageVector *Iso639LanguageDescriptor::getIso639Languages(void) const
+const Iso639LanguageList *Iso639LanguageDescriptor::getIso639Languages(void) const
 {
 	return &iso639Languages;
 }

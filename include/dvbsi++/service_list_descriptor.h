@@ -37,20 +37,20 @@ class ServiceListItem
 		uint8_t getServiceType(void) const;
 };
 
-typedef std::vector<ServiceListItem *> ServiceListItemVector;
-typedef ServiceListItemVector::iterator ServiceListItemIterator;
-typedef ServiceListItemVector::const_iterator ServiceListItemConstIterator;
+typedef std::list<ServiceListItem *> ServiceListItemList;
+typedef ServiceListItemList::iterator ServiceListItemIterator;
+typedef ServiceListItemList::const_iterator ServiceListItemConstIterator;
 
 class ServiceListDescriptor : public Descriptor
 {
 	protected:
-		ServiceListItemVector serviceList;
+		ServiceListItemList serviceList;
 
 	public:
 		ServiceListDescriptor(const uint8_t * const buffer);
 		~ServiceListDescriptor(void);
 
-		const ServiceListItemVector *getServiceList(void) const;
+		const ServiceListItemList *getServiceList(void) const;
 };
 
 #endif /* __service_list_descriptor_h__ */

@@ -24,21 +24,21 @@
 
 #include "descriptor.h"
 
-typedef std::vector<std::string> CountryCodeVector;
-typedef CountryCodeVector::iterator CountryCodeIterator;
-typedef CountryCodeVector::const_iterator CountryCodeConstIterator;
+typedef std::list<std::string> CountryCodeList;
+typedef CountryCodeList::iterator CountryCodeIterator;
+typedef CountryCodeList::const_iterator CountryCodeConstIterator;
 
 class CountryAvailabilityDescriptor : public Descriptor
 {
 	protected:
 		unsigned countryAvailabilityFlag		: 1;
-		CountryCodeVector countryCodes;
+		CountryCodeList countryCodes;
 
 	public:
 		CountryAvailabilityDescriptor(const uint8_t * const buffer);
 
 		uint8_t getCountryAvailabilityFlag(void) const;
-		const CountryCodeVector *getCountryCodes(void) const;
+		const CountryCodeList *getCountryCodes(void) const;
 };
 
 #endif /* __country_availability_descriptor_h__ */

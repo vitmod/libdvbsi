@@ -36,16 +36,16 @@ class BouquetAssociation : public DescriptorContainer
 		BouquetAssociation(const uint8_t * const buffer);
 };
 
-typedef std::vector<BouquetAssociation *> BouquetAssociationVector;
-typedef BouquetAssociationVector::iterator BouquetAssociationIterator;
-typedef BouquetAssociationVector::const_iterator BouquetAssociationConstIterator;
+typedef std::list<BouquetAssociation *> BouquetAssociationList;
+typedef BouquetAssociationList::iterator BouquetAssociationIterator;
+typedef BouquetAssociationList::const_iterator BouquetAssociationConstIterator;
 
 class BouquetAssociationSection : public LongCrcSection , public DescriptorContainer
 {
 	protected:
 		unsigned bouquetDescriptorsLength		: 12;
 		unsigned transportStreamLoopLength		: 12;
-		BouquetAssociationVector bouquet;
+		BouquetAssociationList bouquet;
 
 	public:
 		BouquetAssociationSection(const uint8_t * const buffer);
@@ -56,8 +56,8 @@ class BouquetAssociationSection : public LongCrcSection , public DescriptorConta
 		static const uint32_t TIMEOUT = 12000;
 };
 
-typedef std::vector<BouquetAssociationSection *> BouquetAssociationSectionVector;
-typedef BouquetAssociationSectionVector::iterator BouquetAssociationSectionIterator;
-typedef BouquetAssociationSectionVector::const_iterator BouquetAssociationSectionConstIterator;
+typedef std::list<BouquetAssociationSection *> BouquetAssociationSectionList;
+typedef BouquetAssociationSectionList::iterator BouquetAssociationSectionIterator;
+typedef BouquetAssociationSectionList::const_iterator BouquetAssociationSectionConstIterator;
 
 #endif /* __bouquet_association_section_h__ */

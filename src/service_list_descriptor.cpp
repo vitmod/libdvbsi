@@ -50,7 +50,7 @@ ServiceListDescriptor::~ServiceListDescriptor(void)
 		delete *i;
 }
 
-const ServiceListItemVector *ServiceListDescriptor::getServiceList(void) const
+const ServiceListItemList *ServiceListDescriptor::getServiceList(void) const
 {
 	return &serviceList;
 }

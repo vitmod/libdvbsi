@@ -50,7 +50,7 @@ MultilingualNetworkNameDescriptor::~MultilingualNetworkNameDescriptor(void)
 		delete *i;
 }
 
-const MultilingualNetworkNameVector *MultilingualNetworkNameDescriptor::getMultilingualNetworkNames(void) const
+const MultilingualNetworkNameList *MultilingualNetworkNameDescriptor::getMultilingualNetworkNames(void) const
 {
 	return &multilingualNetworkNames;
 }

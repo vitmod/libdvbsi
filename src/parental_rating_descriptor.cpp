@@ -49,7 +49,7 @@ ParentalRatingDescriptor::~ParentalRatingDescriptor(void)
 		delete *i;
 }
 
-const ParentalRatingVector *ParentalRatingDescriptor::getParentalRatings(void) const
+const ParentalRatingList *ParentalRatingDescriptor::getParentalRatings(void) const
 {
 	return &parentalRatings;
 }

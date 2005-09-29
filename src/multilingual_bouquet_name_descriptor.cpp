@@ -50,7 +50,7 @@ MultilingualBouquetNameDescriptor::~MultilingualBouquetNameDescriptor(void)
 		delete *i;
 }
 
-const MultilingualBouquetNameVector *MultilingualBouquetNameDescriptor::getMultilingualBouquetNames(void) const
+const MultilingualBouquetNameList *MultilingualBouquetNameDescriptor::getMultilingualBouquetNames(void) const
 {
 	return &multilingualBouquetNames;
 }

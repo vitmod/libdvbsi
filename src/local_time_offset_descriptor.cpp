@@ -81,7 +81,7 @@ LocalTimeOffsetDescriptor::~LocalTimeOffsetDescriptor(void)
 		delete *i;
 }
 
-const LocalTimeOffsetVector *LocalTimeOffsetDescriptor::getLocalTimeOffsets(void) const
+const LocalTimeOffsetList *LocalTimeOffsetDescriptor::getLocalTimeOffsets(void) const
 {
 	return &localTimeOffsets;
 }

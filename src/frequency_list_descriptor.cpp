@@ -35,7 +35,7 @@ uint8_t FrequencyListDescriptor::getCodingType(void) const
 	return codingType;
 }
 
-const CentreFrequencyVector *FrequencyListDescriptor::getCentreFrequencies(void) const
+const CentreFrequencyList *FrequencyListDescriptor::getCentreFrequencies(void) const
 {
 	return &centreFrequencies;
 }

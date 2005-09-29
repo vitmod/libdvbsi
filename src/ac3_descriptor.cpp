@@ -92,7 +92,7 @@ uint8_t Ac3Descriptor::getAvsc(void) const
 	return avsc;
 }
 
-const AdditionalInfoVector *Ac3Descriptor::getAdditionalInfo(void) const
+const AdditionalInfoList *Ac3Descriptor::getAdditionalInfo(void) const
 {
 	return &additionalInfo;
 }

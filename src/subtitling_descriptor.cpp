@@ -62,7 +62,7 @@ SubtitlingDescriptor::~SubtitlingDescriptor(void)
 		delete *i;
 }
 
-const SubtitlingVector *SubtitlingDescriptor::getSubtitlings(void) const
+const SubtitlingList *SubtitlingDescriptor::getSubtitlings(void) const
 {
 	return &subtitlings;
 }

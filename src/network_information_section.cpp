@@ -61,7 +61,7 @@ NetworkInformationSection::~NetworkInformationSection(void)
 		delete *i;
 }
 
-const TransportStreamInfoVector *NetworkInformationSection::getTsInfo(void) const
+const TransportStreamInfoList *NetworkInformationSection::getTsInfo(void) const
 {
 	return &tsInfo;
 }
