@@ -23,8 +23,7 @@
 
 UnknownDescriptor::UnknownDescriptor(const uint8_t * const buffer) : Descriptor(buffer), dataBytes(descriptorLength)
 {
-	for (size_t i = 0; i < descriptorLength; ++i)
-		dataBytes[i]=buffer[i+2];
+	memcpy(&dataBytes[0], buffer+2, descriptorLength);
 }
 
 size_t UnknownDescriptor::writeToBuffer(uint8_t * const buffer) const

@@ -37,7 +37,7 @@ class Descriptor
 		uint8_t getTag(void) const;
 		uint8_t getLength(void) const;
 
-		size_t writeToBuffer(uint8_t * const buffer) const;
+		virtual size_t writeToBuffer(uint8_t * const buffer) const;
 };
 
 typedef std::list<Descriptor *> DescriptorList;
