@@ -152,9 +152,9 @@ CaProgramMapSection::~CaProgramMapSection(void)
 		delete *i;
 }
 
-void CaProgramMapSection::injectDescriptor(const uint8_t *descr)
+void CaProgramMapSection::injectDescriptor(const uint8_t *descr, bool back)
 {
-	descriptorSi(descr);
+	descriptorSi(descr, back);
 	programInfoLength += descriptorList.back()->getLength() + 2;
 	length += descriptorList.back()->getLength() + 2;
 }
