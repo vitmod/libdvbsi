@@ -40,5 +40,6 @@
 
 #include <string>
 #include <list>
+#include <vector>
 
 #endif /* __compat_h__ */

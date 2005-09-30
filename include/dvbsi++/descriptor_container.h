@@ -33,10 +33,10 @@ enum DescriptorScope {
 class DescriptorContainer
 {
 	protected:
-		void descriptor(const uint8_t * const buffer, const enum DescriptorScope scope);
-		void descriptorSi(const uint8_t * const buffer);
-		void descriptorCarousel(const uint8_t * const buffer);
-		void descriptorMhp(const uint8_t * const buffer);
+		void descriptor(const uint8_t * const buffer, const enum DescriptorScope scope, bool back=true);
+		void descriptorSi(const uint8_t * const buffer, bool back=true);
+		void descriptorCarousel(const uint8_t * const buffer, bool back=true);
+		void descriptorMhp(const uint8_t * const buffer, bool back=true);
 		DescriptorList descriptorList;
 
 	public:

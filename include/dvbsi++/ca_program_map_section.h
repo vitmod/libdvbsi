@@ -24,6 +24,7 @@
 
 #include "ca_descriptor.h"
 #include "program_map_section.h"
+#include "descriptor_container.h"
 
 class CaLengthField
 {
@@ -61,7 +62,7 @@ typedef std::list<CaElementaryStreamInfo *> CaElementaryStreamInfoList;
 typedef CaElementaryStreamInfoList::iterator CaElementaryStreamInfoIterator;
 typedef CaElementaryStreamInfoList::const_iterator CaElementaryStreamInfoConstIterator;
 
-class CaProgramMapSection
+class CaProgramMapSection : public DescriptorContainer
 {
 	protected:
 		uint32_t length;
@@ -72,7 +73,6 @@ class CaProgramMapSection
 		unsigned currentNextIndicator			: 1;
 		unsigned programInfoLength			: 12;
 		unsigned caPmtCmdId				: 8;
-		CaDescriptorList descriptors;
 		CaElementaryStreamInfoList esInfo;
 
 	public:
@@ -80,7 +80,7 @@ class CaProgramMapSection
 		~CaProgramMapSection(void);
 
 		bool append(const ProgramMapSection * const pmt);
-		void injectProgramInfoDescriptor(const uint8_t *descriptor, bool front=true);
+		void injectDescriptor(const uint8_t *descriptor);
 		size_t writeToBuffer(uint8_t * const buffer) const;
 		ssize_t writeToFile(int fd) const;
 };
