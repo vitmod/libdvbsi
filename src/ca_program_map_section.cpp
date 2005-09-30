@@ -156,8 +156,8 @@ void CaProgramMapSection::injectDescriptor(const uint8_t *descr, bool back)
 {
 	descriptorSi(descr, back);
 	int len = (back ? descriptorList.back()->getLength() : descriptorList.front()->getLength()) + 2;
-	programInfoLength += len + 2;
-	length += descriptorList.back()->getLength() + 2;
+	programInfoLength += len;
+	length += len;
 }
 
 size_t CaProgramMapSection::writeToBuffer(uint8_t * const buffer) const
