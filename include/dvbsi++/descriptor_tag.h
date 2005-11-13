@@ -119,7 +119,7 @@ enum CarouselDescriptorTag {
 	CACHING_PRIORITY_DESCRIPTOR			= 0x71,
 	CONTENT_TYPE_DESCRIPTOR				= 0x72,
 	/* 0x5F: PRIVATE_DATA_SPECIFIER_DESCRIPTOR */
-	/* 0x73 - 0x7F: Reseved */
+	/* 0x73 - 0x7F: Reserved */
 	/* 0x80 - 0xFE: User defined */
 	/* 0xFF: FORBIDDEN_DESCRIPTOR */
 };

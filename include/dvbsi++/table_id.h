@@ -82,6 +82,7 @@ enum TableId {
 	TID_ST			= 0x72,	/* stuffing_section */
 	TID_TOT			= 0x73,	/* time_offset_section */
 	TID_AIT			= 0x74, /* application_information_section */
+	TID_CIT			= 0x77, /* content_identifier_section */
 	TID_DIT			= 0x7E,	/* discontinuity_information_section */
 	TID_SIT			= 0x7F,	/* selection_information_section */
 
