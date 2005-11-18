@@ -52,7 +52,7 @@ size_t CaLengthField::writeToBuffer(uint8_t * const buffer) const
 	return total;
 }
 
-CaElementaryStreamInfo::CaElementaryStreamInfo(const ElementaryStreamInfo * const info, const uint8_t cmdId)
+CaElementaryStreamInfo::CaElementaryStreamInfo(const ElementaryStreamInfo * const info, const uint8_t cmdId, const CaIdVector &caids)
 {
 	streamType = info->streamType;
 	elementaryPid = info->elementaryPid;
@@ -60,8 +60,13 @@ CaElementaryStreamInfo::CaElementaryStreamInfo(const ElementaryStreamInfo * cons
 
 	for (DescriptorConstIterator i = info->getDescriptors()->begin(); i != info->getDescriptors()->end(); ++i)
 		if ((*i)->getTag() == CA_DESCRIPTOR) {
-			descriptors.push_back(new CaDescriptor(*(CaDescriptor *)*i));
-			esInfoLength += (*i)->getLength() + 2;
+			uint16_t caid = ((CaDescriptor*)(*i))->getCaSystemId();
+			CaIdVectorConstIterator it = std::lower_bound(caids.begin(), caids.end(), caid);
+			if ( caids.empty() || (it != caids.end() && *it == caid) )
+			{
+				descriptors.push_back(new CaDescriptor(*(CaDescriptor *)*i));
+				esInfoLength += (*i)->getLength() + 2;
+			}
 		}
 
 	if (esInfoLength) {
@@ -107,9 +112,14 @@ bool CaProgramMapSection::append(const ProgramMapSection * const pmt)
 
 	for (DescriptorConstIterator i = pmt->getDescriptors()->begin(); i != pmt->getDescriptors()->end(); ++i)
 		if ((*i)->getTag() == CA_DESCRIPTOR) {
-			descriptorList.push_back(new CaDescriptor(*(CaDescriptor *)*i));
-			programInfoLength += (*i)->getLength() + 2;
-			length += (*i)->getLength() + 2;
+			uint16_t caid = ((CaDescriptor*)(*i))->getCaSystemId();
+			CaIdVectorConstIterator it = std::lower_bound(caids.begin(), caids.end(), caid);
+			if ( caids.empty() || (it != caids.end() && *it == caid) )
+			{
+				descriptorList.push_back(new CaDescriptor(*(CaDescriptor *)*i));
+				programInfoLength += (*i)->getLength() + 2;
+				length += (*i)->getLength() + 2;
+			}
 		}
 
 	for (ElementaryStreamInfoConstIterator i = pmt->esInfo.begin(); i != pmt->esInfo.end(); ++i) {
@@ -121,9 +131,10 @@ bool CaProgramMapSection::append(const ProgramMapSection * const pmt)
 	return true;
 }
 
-CaProgramMapSection::CaProgramMapSection(const ProgramMapSection * const pmt, const uint8_t listManagement, const uint8_t cmdId)
-	:programInfoLength(0)
+CaProgramMapSection::CaProgramMapSection(const ProgramMapSection * const pmt, const uint8_t listManagement, const uint8_t cmdId, const CaIdVector &caids)
+	:programInfoLength(0), caids(caids)
 {
+	std::sort(caids.begin(), caids.end());  // we use std::lower_bound (binary_search).. so we must sort the vector..
 	length = 6;
 
 	caPmtTag = 0x9f8032;
