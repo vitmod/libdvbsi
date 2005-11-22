@@ -134,7 +134,7 @@ bool CaProgramMapSection::append(const ProgramMapSection * const pmt)
 CaProgramMapSection::CaProgramMapSection(const ProgramMapSection * const pmt, const uint8_t listManagement, const uint8_t cmdId, const CaIdVector &caids)
 	:programInfoLength(0), caids(caids)
 {
-	std::sort(caids.begin(), caids.end());  // we use std::lower_bound (binary_search).. so we must sort the vector..
+	std::sort(this->caids.begin(), this->caids.end());  // we use std::lower_bound (binary_search).. so we must sort the vector..
 	length = 6;
 
 	caPmtTag = 0x9f8032;
