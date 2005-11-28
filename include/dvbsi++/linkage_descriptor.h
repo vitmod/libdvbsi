@@ -15,7 +15,7 @@
 
 #include "descriptor.h"
 
-typedef std::list<uint8_t> PrivateDataByteVector;
+typedef std::vector<uint8_t> PrivateDataByteVector;
 typedef PrivateDataByteVector::iterator PrivateDataByteIterator;
 typedef PrivateDataByteVector::const_iterator PrivateDataByteConstIterator;
 
