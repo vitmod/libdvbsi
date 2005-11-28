@@ -15,9 +15,9 @@
 
 #include "descriptor.h"
 
-typedef std::list<uint8_t> PrivateDataByteList;
-typedef PrivateDataByteList::iterator PrivateDataByteIterator;
-typedef PrivateDataByteList::const_iterator PrivateDataByteConstIterator;
+typedef std::list<uint8_t> PrivateDataByteVector;
+typedef PrivateDataByteVector::iterator PrivateDataByteIterator;
+typedef PrivateDataByteVector::const_iterator PrivateDataByteConstIterator;
 
 class LinkageDescriptor : public Descriptor
 {
@@ -26,7 +26,7 @@ class LinkageDescriptor : public Descriptor
 		unsigned originalNetworkId			: 16;
 		unsigned serviceId				: 16;
 		unsigned linkageType				: 8;
-		PrivateDataByteList privateDataBytes;
+		PrivateDataByteVector privateDataBytes;
 		unsigned handOverType				: 4;
 		unsigned originType				: 1;
 		unsigned networkId				: 16;
@@ -39,7 +39,7 @@ class LinkageDescriptor : public Descriptor
 		uint16_t getOriginalNetworkId(void) const;
 		uint16_t getServiceId(void) const;
 		uint8_t getLinkageType(void) const;
-		const PrivateDataByteList *getPrivateDataBytes(void) const;
+		const PrivateDataByteVector *getPrivateDataBytes(void) const;
 		uint8_t getHandOverType(void) const;
 		uint8_t getOriginType(void) const;
 		uint16_t getNetworkId(void) const;
