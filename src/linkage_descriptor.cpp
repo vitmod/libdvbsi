@@ -23,13 +23,13 @@ LinkageDescriptor::LinkageDescriptor(const uint8_t * const buffer) : Descriptor(
 	if (linkageType != 0x08)
 	{
 		privateDataBytes.reserve(descriptorLength - 7);
-		memcpy(&privateDataBytes[0], buffer+9, descriptorLength-7);
+		privateDataBytes.insert(privateDataBytes.begin(), buffer+9, buffer+9+descriptorLength-7);
 	}
 	else {
+		uint8_t offset = 0;
+		int bytes = 0;
 		handOverType = (buffer[9] >> 4) & 0x0f;
 		originType = buffer[9] & 0x01;
-
-		uint8_t offset = 0;
 
 		if ((handOverType >= 0x01) && (handOverType <= 0x03)) {
 			networkId = UINT16(&buffer[10]);
@@ -40,8 +40,9 @@ LinkageDescriptor::LinkageDescriptor(const uint8_t * const buffer) : Descriptor(
 			initialServiceId = UINT16(&buffer[offset + 10]);
 			offset += 2;
 		}
-		privateDataBytes.reserve(descriptorLength - (offset+8));
-		memcpy(&privateDataBytes[0], buffer+offset+10, descriptorLength-(offset+8));
+		bytes = descriptorLength-offset-8;
+		privateDataBytes.reserve(bytes);
+		privateDataBytes.insert(privateDataBytes.begin(), buffer+offset+10, buffer+offset+10+bytes);
 	}
 }
 
