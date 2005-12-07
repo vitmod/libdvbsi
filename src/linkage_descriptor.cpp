@@ -22,8 +22,8 @@ LinkageDescriptor::LinkageDescriptor(const uint8_t * const buffer) : Descriptor(
 
 	if (linkageType != 0x08)
 	{
-		privateDataBytes.reserve(descriptorLength - 7);
-		privateDataBytes.insert(privateDataBytes.begin(), buffer+9, buffer+9+descriptorLength-7);
+		privateDataBytes.resize(descriptorLength - 7);
+		memcpy(&privateDataBytes[0], buffer+9, descriptorLength-7);
 	}
 	else {
 		uint8_t offset = 0;
@@ -41,8 +41,8 @@ LinkageDescriptor::LinkageDescriptor(const uint8_t * const buffer) : Descriptor(
 			offset += 2;
 		}
 		bytes = descriptorLength-offset-8;
-		privateDataBytes.reserve(bytes);
-		privateDataBytes.insert(privateDataBytes.begin(), buffer+offset+10, buffer+offset+10+bytes);
+		privateDataBytes.resize(bytes);
+		memcpy(&privateDataBytes[0], buffer+offset+10, bytes);
 	}
 }
 
