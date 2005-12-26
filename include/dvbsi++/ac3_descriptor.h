@@ -15,9 +15,9 @@
 
 #include "descriptor.h"
 
-typedef std::list<uint8_t> AdditionalInfoList;
-typedef AdditionalInfoList::iterator AdditionalInfoIterator;
-typedef AdditionalInfoList::const_iterator AdditionalInfoConstIterator;
+typedef std::vector<uint8_t> AdditionalInfoVector;
+typedef AdditionalInfoVector::iterator AdditionalInfoIterator;
+typedef AdditionalInfoVector::const_iterator AdditionalInfoConstIterator;
 
 class Ac3Descriptor : public Descriptor
 {
@@ -30,7 +30,7 @@ class Ac3Descriptor : public Descriptor
 		unsigned bsid					: 8;
 		unsigned mainid					: 8;
 		unsigned avsc					: 8;
-		AdditionalInfoList additionalInfo;
+		AdditionalInfoVector additionalInfo;
 
 	public:
 		Ac3Descriptor(const uint8_t * const buffer);
@@ -43,7 +43,7 @@ class Ac3Descriptor : public Descriptor
 		uint8_t getBsid(void) const;
 		uint8_t getMainid(void) const;
 		uint8_t getAvsc(void) const;
-		const AdditionalInfoList *getAdditionalInfo(void) const;
+		const AdditionalInfoVector *getAdditionalInfo(void) const;
 };
 
 #endif /* __ac3_descriptor_h__ */

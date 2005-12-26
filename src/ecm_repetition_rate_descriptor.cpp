@@ -13,28 +13,28 @@
 
 #include "dvbsi++/byte_stream.h"
 
-ECMRepetitionRateDecriptor::ECMRepetitionRateDecriptor(const uint8_t* const buffer) : Descriptor(buffer), privateDataBytes(descriptorLength-4)
+ECMRepetitionRateDescriptor::ECMRepetitionRateDescriptor(const uint8_t* const buffer) : Descriptor(buffer), privateDataBytes(descriptorLength-4)
 {
 	caSystemId = r16(&buffer[2]);
 	repetitionRate = r16(&buffer[4]);
 	memcpy(&privateDataBytes[0], buffer+6, descriptorLength-4);
 }
 
-ECMRepetitionRateDecriptor::~ECMRepetitionRateDecriptor()
+ECMRepetitionRateDescriptor::~ECMRepetitionRateDescriptor()
 {
 }
 
-uint16_t ECMRepetitionRateDecriptor::getCaSystemId(void) const
+uint16_t ECMRepetitionRateDescriptor::getCaSystemId(void) const
 {
 	return caSystemId;
 }
 
-uint16_t ECMRepetitionRateDecriptor::getRepetitionRate(void) const
+uint16_t ECMRepetitionRateDescriptor::getRepetitionRate(void) const
 {
 	return repetitionRate;
 }
 
-const ECMRepetitionPrivateByteVector* ECMRepetitionRateDecriptor::getPrivateDataBytes() const
+const ECMRepetitionPrivateByteVector* ECMRepetitionRateDescriptor::getPrivateDataBytes() const
 {
 	return &privateDataBytes;
 }

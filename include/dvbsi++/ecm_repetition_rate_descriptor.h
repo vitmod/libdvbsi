@@ -18,7 +18,7 @@ typedef std::vector<uint8_t> ECMRepetitionPrivateByteVector;
 typedef ECMRepetitionPrivateByteVector::iterator ECMRepetitionPrivateByteIterator;
 typedef ECMRepetitionPrivateByteVector::const_iterator ECMRepetitionPrivateByteConstIterator;
 
-class ECMRepetitionRateDecriptor : public Descriptor
+class ECMRepetitionRateDescriptor : public Descriptor
 {
 	protected:
 		unsigned caSystemId			:16;
@@ -27,8 +27,8 @@ class ECMRepetitionRateDecriptor : public Descriptor
 		ECMRepetitionPrivateByteVector privateDataBytes;
 
 	public:
-		ECMRepetitionRateDecriptor(const uint8_t* const buffer);
-		virtual ~ECMRepetitionRateDecriptor();
+		ECMRepetitionRateDescriptor(const uint8_t* const buffer);
+		virtual ~ECMRepetitionRateDescriptor();
 
 		uint16_t getCaSystemId(void) const;
 		uint16_t getRepetitionRate(void) const;
