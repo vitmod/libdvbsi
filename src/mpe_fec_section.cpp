@@ -45,9 +45,9 @@ uint32_t RealTimeParameters::getAddress() const
 	return address;
 }
 
-MpeFecSection::MpeFecSection(const uint8_t* const buffer):LongCrcSection(buffer), rtParam(buffer+8), rsDataBytes(sectionLength - 13)
+MpeFecSection::MpeFecSection(const uint8_t* const buffer):LongCrcSection(buffer), rtParam(buffer+8), rsDataBytes(sectionLength > 13 ? sectionLength - 13 : 0)
 {
-	memcpy(&rsDataBytes[0], buffer+11, sectionLength-13);
+	memcpy(&rsDataBytes[0], buffer+11, rsDataBytes.size());
 }
 
 MpeFecSection::~MpeFecSection()

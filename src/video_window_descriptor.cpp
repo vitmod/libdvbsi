@@ -15,6 +15,8 @@
 
 VideoWindowDescriptor::VideoWindowDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(4);
+
 	horizontalOffset = UINT16(&buffer[2]) >> 2;
 	verticalOffset = ((buffer[3] & 0x03) << 12) | (UINT16(&buffer[4]) >> 4);
 	windowPriority = buffer[5] & 0x0F;

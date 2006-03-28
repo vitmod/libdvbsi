@@ -14,6 +14,8 @@
 
 CableDeliverySystemDescriptor::CableDeliverySystemDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(11);
+
 	frequency =
 	(
 		((buffer[2] >> 4)	* 10000000) +

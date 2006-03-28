@@ -15,6 +15,8 @@
 
 ServiceMoveDescriptor::ServiceMoveDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(6);
+
 	newOriginalNetworkId = UINT16(&buffer[2]);
 	newTransportStreamId = UINT16(&buffer[4]);
 	newServiceId = UINT16(&buffer[6]);

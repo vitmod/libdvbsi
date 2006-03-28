@@ -15,6 +15,8 @@
 
 Crc32Descriptor::Crc32Descriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(4);
+
 	crc32 = r32(&buffer[2]);
 }
 

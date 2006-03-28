@@ -31,8 +31,10 @@ uint8_t ServiceListItem::getServiceType(void) const
 
 ServiceListDescriptor::ServiceListDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	for (size_t i = 0; i < descriptorLength; i += 3)
+	for (size_t i = 0; i < descriptorLength; i += 3) {
+		ASSERT_MIN_DLEN(i + 3);
 		serviceList.push_back(new ServiceListItem(&buffer[i + 2]));
+	}
 }
 
 ServiceListDescriptor::~ServiceListDescriptor(void)

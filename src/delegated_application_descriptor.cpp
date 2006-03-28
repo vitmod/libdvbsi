@@ -9,13 +9,15 @@
  *
  * See the file 'COPYING' in the top level directory for details.
  */
- 
+
 #include <dvbsi++/delegated_application_descriptor.h>
 
 DelegatedApplicationDescriptor::DelegatedApplicationDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	for (size_t i = 0; i < descriptorLength; i += 6)
+	for (size_t i = 0; i < descriptorLength; i += 6) {
+		ASSERT_MIN_DLEN(i + 6);
 		applicationIdentifiers.push_back(new ApplicationIdentifier(&buffer[i + 2]));
+	}
 }
 
 DelegatedApplicationDescriptor::~DelegatedApplicationDescriptor(void)

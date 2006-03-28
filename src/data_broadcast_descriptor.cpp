@@ -15,16 +15,23 @@
 
 DataBroadcastDescriptor::DataBroadcastDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(8);
+
 	dataBroadcastId = UINT16(&buffer[2]);
-	componentTag = buffer[3];
-	selectorLength = buffer[4];
+	componentTag = buffer[4];
+	selectorLength = buffer[5];
+
+	ASSERT_MIN_DLEN(selectorLength + 8);
 
 	for (size_t i = 0; i < selectorLength; ++i)
-		selectorBytes.push_back(buffer[i + 5]);
+		selectorBytes.push_back(buffer[i + 6]);
 
-	iso639LanguageCode.assign((char *)&buffer[selectorLength + 5], 3);
-	textLength = buffer[selectorLength + 8];
-	text.assign((char *)&buffer[selectorLength + 9], textLength);
+	iso639LanguageCode.assign((char *)&buffer[selectorLength + 6], 3);
+	textLength = buffer[selectorLength + 9];
+
+	ASSERT_MIN_DLEN(textLength + selectorLength + 8);
+
+	text.assign((char *)&buffer[selectorLength + 10], textLength);
 }
 
 uint16_t DataBroadcastDescriptor::getDataBroadcastId(void) const

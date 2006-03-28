@@ -17,13 +17,8 @@
 
 class UnknownDescriptor : public Descriptor
 {
-	protected:
-		std::vector<uint8_t> dataBytes;
-
 	public:
-		UnknownDescriptor(const uint8_t * const buffer);
-
-		virtual size_t writeToBuffer(uint8_t * const buffer) const;
-};
+		UnknownDescriptor(const uint8_t * const buffer) __attribute__ ((deprecated));
+} __attribute__ ((deprecated));
 
 #endif /* __unknown_descriptor_h__ */

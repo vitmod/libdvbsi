@@ -30,8 +30,10 @@ uint8_t ParentalRating::getRating(void) const
 
 ParentalRatingDescriptor::ParentalRatingDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	for (size_t i = 0; i < descriptorLength; i += 4)
+	for (size_t i = 0; i < descriptorLength; i += 4) {
+		ASSERT_MIN_DLEN(i + 4);
 		parentalRatings.push_back(new ParentalRating(&buffer[i + 2]));
+	}
 }
 
 ParentalRatingDescriptor::~ParentalRatingDescriptor(void)

@@ -15,6 +15,8 @@
 
 PdcDescriptor::PdcDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(3);
+
 	programmeIdentificationLabel = ((buffer[2] & 0x0f) << 16) | UINT16(&buffer[3]);
 }
 

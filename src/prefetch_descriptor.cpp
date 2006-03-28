@@ -48,7 +48,7 @@ PrefetchDescriptor::PrefetchDescriptor(const uint8_t * const buffer) : Descripto
 PrefetchDescriptor::~PrefetchDescriptor(void)
 {
 	for (PrefetchLabelIterator i = prefetchLabels.begin(); i != prefetchLabels.end(); ++i)
-		delete *i;	
+		delete *i;
 }
 
 uint8_t PrefetchDescriptor::getTransportProtocolLabel(void) const

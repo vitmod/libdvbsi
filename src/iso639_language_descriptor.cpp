@@ -30,8 +30,10 @@ uint8_t Iso639Language::getAudioType(void) const
 
 Iso639LanguageDescriptor::Iso639LanguageDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	for (size_t i = 0; i < descriptorLength; i += 4)
+	for (size_t i = 0; i < descriptorLength; i += 4) {
+		ASSERT_MIN_DLEN(i + 4);
 		iso639Languages.push_back(new Iso639Language(&buffer[i + 2]));
+	}
 }
 
 Iso639LanguageDescriptor::~Iso639LanguageDescriptor(void)

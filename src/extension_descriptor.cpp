@@ -11,11 +11,13 @@
  */
 #include "dvbsi++/extension_descriptor.h"
 
-ExtensionDescriptor::ExtensionDescriptor(const uint8_t* const buffer):Descriptor(buffer)
+ExtensionDescriptor::ExtensionDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(1);
+
 	extensionTag = buffer[2];
 	selectorBytes.resize(descriptorLength - 1);
-	memcpy(&selectorBytes[0], buffer+3, descriptorLength - 1);
+	memcpy(&selectorBytes[0], &buffer[3], descriptorLength - 1);
 }
 
 ExtensionDescriptor::~ExtensionDescriptor()
@@ -27,7 +29,7 @@ uint8_t ExtensionDescriptor::getExtensionTag() const
 	return extensionTag;
 }
 
-const SelectorByteVector* ExtensionDescriptor::getSelectorBytes() const
+const SelectorByteVector *ExtensionDescriptor::getSelectorBytes() const
 {
 	return &selectorBytes;
 }

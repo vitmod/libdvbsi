@@ -15,6 +15,8 @@
 
 TerrestrialDeliverySystemDescriptor::TerrestrialDeliverySystemDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(7);
+
 	centreFrequency = UINT32(&buffer[2]);
 	bandwidth = (buffer[6] >> 5) & 0x07;
 	constellation = (buffer[7] >> 6) & 0x03;

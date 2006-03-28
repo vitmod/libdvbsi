@@ -15,10 +15,14 @@
 
 FrequencyListDescriptor::FrequencyListDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(1);
+
 	codingType = buffer[2] & 0x03;
 
-	for (size_t i = 0; i < descriptorLength - 1; i += 4)
+	for (size_t i = 0; i < descriptorLength - 1; i += 4) {
+		ASSERT_MIN_DLEN(i + 5);
 		centreFrequencies.push_back(UINT32(&buffer[i + 3]));
+	}
 }
 
 uint8_t FrequencyListDescriptor::getCodingType(void) const

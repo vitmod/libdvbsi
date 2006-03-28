@@ -14,10 +14,16 @@
 
 CountryAvailabilityDescriptor::CountryAvailabilityDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	size_t headerLength = 1;
+	ASSERT_MIN_DLEN(headerLength);
+
 	std::string countryCode;
 	countryAvailabilityFlag = (buffer[2] >> 7) & 0x01;
 
 	for (size_t i = 0; i < descriptorLength - 1; i += 3) {
+		headerLength += 3;
+		ASSERT_MIN_DLEN(headerLength);
+
 		countryCode.assign((char *)&buffer[i + 3], 3);
 		countryCodes.push_back(countryCode);
 	}

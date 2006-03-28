@@ -15,6 +15,8 @@
 
 PrivateDataSpecifierDescriptor::PrivateDataSpecifierDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(4);
+
 	privateDataSpecifier = UINT32(&buffer[2]);
 }
 

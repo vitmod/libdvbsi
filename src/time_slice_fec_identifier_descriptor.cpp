@@ -11,16 +11,18 @@
  */
 #include "dvbsi++/time_slice_fec_identifier_descriptor.h"
 
-TimeSliceFecIdentifierDescriptor::TimeSliceFecIdentifierDescriptor(const uint8_t* const buffer):Descriptor(buffer),idSelectorBytes(descriptorLength - 3)
+TimeSliceFecIdentifierDescriptor::TimeSliceFecIdentifierDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(3);
+
 	timeSlicing = (buffer[2] >> 7) & 0x01;
 	mpeFec = (buffer[2] >> 5) & 0x03;
-	frameSize = buffer[2] &0x03;
+	frameSize = buffer[2] & 0x03;
 	maxBurstDuration = buffer[3];
 	maxAverageRate = (buffer[4] >> 4) & 0x0f;
 	timeSliceFecId = buffer[4] & 0x0f;
-	// normally timeSliceFecId should be 0 but i do not believe in others
-	// keeping standards
+
+	idSelectorBytes.resize(descriptorLength - 3);
 	memcpy(&idSelectorBytes[0], buffer+5, descriptorLength - 3);
 }
 

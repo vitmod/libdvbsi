@@ -61,8 +61,10 @@ uint16_t LocalTimeOffset::getNextTimeOffset(void) const
 
 LocalTimeOffsetDescriptor::LocalTimeOffsetDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	for (size_t i = 0; i < descriptorLength; i += 13)
+	for (size_t i = 0; i < descriptorLength; i += 13) {
+		ASSERT_MIN_DLEN(i + 13);
 		localTimeOffsets.push_back(new LocalTimeOffset(&buffer[i + 2]));
+	}
 }
 
 

@@ -9,12 +9,14 @@
  *
  * See the file 'COPYING' in the top level directory for details.
  */
- 
+
 #include <dvbsi++/application_storage_descriptor.h>
 #include <dvbsi++/byte_stream.h>
 
 ApplicationStorageDescriptor::ApplicationStorageDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(7);
+
 	storageProperty = buffer[2];
 	notLaunchableFromBroadcast = (buffer[3] >> 7) & 0x01;
 	version = r32(&buffer[4]);

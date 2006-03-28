@@ -14,6 +14,8 @@
 
 InfoDescriptor::InfoDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(3);
+
 	iso639LanguageCode.assign((char *)&buffer[2], 3);
 	info.assign((char *)&buffer[5], descriptorLength - 3);
 }

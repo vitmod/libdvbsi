@@ -14,6 +14,8 @@
 
 CachingPriorityDescriptor::CachingPriorityDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(2);
+
 	priorityValue = buffer[2];
 	transparencyLevel = buffer[3];
 }

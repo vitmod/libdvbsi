@@ -37,8 +37,10 @@ uint16_t NvodReference::getServiceId(void) const
 
 NvodReferenceDescriptor::NvodReferenceDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	for (size_t i = 0; i < descriptorLength; i += 6)
+	for (size_t i = 0; i < descriptorLength; i += 6) {
+		ASSERT_MIN_DLEN(i + 6);
 		nvodReferences.push_back(new NvodReference(&buffer[i + 2]));
+	}
 }
 
 NvodReferenceDescriptor::~NvodReferenceDescriptor(void)

@@ -42,8 +42,10 @@ uint8_t VbiTeletext::getTeletextPageNumber(void) const
 
 VbiTeletextDescriptor::VbiTeletextDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	for (size_t i = 0; i < descriptorLength; i += 5)
+	for (size_t i = 0; i < descriptorLength; i += 5) {
+		ASSERT_MIN_DLEN(i + 5);
 		vbiTeletexts.push_back(new VbiTeletext(&buffer[i + 2]));
+	}
 }
 
 VbiTeletextDescriptor::~VbiTeletextDescriptor(void)

@@ -14,6 +14,8 @@
 
 AncillaryDataDescriptor::AncillaryDataDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(1);
+
 	ancillaryDataIdentifier = buffer[2];
 }
 

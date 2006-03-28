@@ -12,7 +12,7 @@
 
 #include <dvbsi++/application_identifier.h>
 #include <dvbsi++/byte_stream.h>
- 
+
 ApplicationIdentifier::ApplicationIdentifier(const uint8_t * const buffer)
 {
 	organisationId = r32(&buffer[0]);

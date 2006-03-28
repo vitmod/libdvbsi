@@ -15,6 +15,8 @@
 
 CompressedModuleDescriptor::CompressedModuleDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(5);
+
 	compressionMethod = buffer[2];
 	originalSize = r32(&buffer[3]);
 }

@@ -14,7 +14,12 @@
 
 DvbHtmlApplicationBoundaryDescriptor::DvbHtmlApplicationBoundaryDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(1);
+
 	labelLength = buffer[2];
+
+	ASSERT_MIN_DLEN(labelLength + 1);
+
 	label.assign((char *)&buffer[3], labelLength);
 	regularExpression.assign((char *)&buffer[labelLength + 3], descriptorLength - labelLength - 1);
 }

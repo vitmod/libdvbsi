@@ -25,15 +25,31 @@ BouquetAssociation::BouquetAssociation(const uint8_t * const buffer)
 
 BouquetAssociationSection::BouquetAssociationSection(const uint8_t * const buffer) : LongCrcSection(buffer)
 {
-	bouquetDescriptorsLength = DVB_LENGTH(&buffer[8]);
+	bouquetDescriptorsLength = sectionLength > 9 ? DVB_LENGTH(&buffer[8]) : 0;
 
-	for (size_t i = 10; i < bouquetDescriptorsLength + 10; i += buffer[i + 1] + 2)
-		descriptor(&buffer[i], SCOPE_SI);
+	uint16_t pos = 10;
+	uint16_t bytesLeft = sectionLength > 11 ? sectionLength - 11 : 0;
+	uint16_t loopLength = 0;
+	uint16_t bytesLeft2 = bouquetDescriptorsLength;
+	
+	while (bytesLeft >= bytesLeft2 && bytesLeft2 > 1 && bytesLeft2 >= (loopLength = 2 + buffer[pos+1])) {
+		descriptor(&buffer[pos], SCOPE_SI);
+		pos += loopLength;
+		bytesLeft -= loopLength;
+		bytesLeft2 -= loopLength;
+	}
 
-	transportStreamLoopLength = DVB_LENGTH(&buffer[bouquetDescriptorsLength + 10]);
-
-	for (size_t i = bouquetDescriptorsLength + 12; i < sectionLength - 1; i += DVB_LENGTH(&buffer[i + 4]) + 6)
-		bouquet.push_back(new BouquetAssociation(&buffer[i]));
+	if (!bytesLeft2 && bytesLeft > 1) { 
+		bytesLeft2 = transportStreamLoopLength = DVB_LENGTH(&buffer[pos]);
+		bytesLeft -= 2;
+		pos += 2;
+		while (bytesLeft >= bytesLeft2 && bytesLeft2 > 4 && bytesLeft2 >= (loopLength = 6 + DVB_LENGTH(&buffer[pos+4]))) {
+			bouquet.push_back(new BouquetAssociation(&buffer[pos]));
+			bytesLeft -= loopLength;
+			bytesLeft2 -= loopLength;
+			pos += loopLength;
+		}
+	}
 }
 
 BouquetAssociationSection::~BouquetAssociationSection(void)

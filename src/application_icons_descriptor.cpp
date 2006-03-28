@@ -12,10 +12,15 @@
 
 #include <dvbsi++/application_icons_descriptor.h>
 #include <dvbsi++/byte_stream.h>
- 
+
 ApplicationIconsDescriptor::ApplicationIconsDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(3);
+
 	iconLocatorLength = buffer[2];
+
+	ASSERT_MIN_DLEN(iconLocatorLength + 3);
+
 	iconLocator.assign((char *)&buffer[3], iconLocatorLength);
 	iconFlags = r16(&buffer[iconLocatorLength + 3]);
 }

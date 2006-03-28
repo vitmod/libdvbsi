@@ -9,7 +9,7 @@
  *
  * See the file 'COPYING' in the top level directory for details.
  */
- 
+
 #include <dvbsi++/transport_protocol_descriptor.h>
 #include <dvbsi++/byte_stream.h>
 
@@ -141,10 +141,13 @@ const UrlList *InteractionTransport::getUrlExtensions(void) const
 
 TransportProtocolDescriptor::TransportProtocolDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(5);
+
 	protocolId = r16(&buffer[2]);
 	transportProtocolLabel = buffer[4];
 	switch (protocolId) {
 		case 0x0001:
+			ASSERT_MIN_DLEN(13);
 			ocTransport = new OcTransport(&buffer[5]);
 			break;
 		case 0x0002:

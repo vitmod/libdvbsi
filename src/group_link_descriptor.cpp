@@ -15,6 +15,8 @@
 
 GroupLinkDescriptor::GroupLinkDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(5);
+
 	position = buffer[2];
 	groupId = r32(&buffer[3]);
 }

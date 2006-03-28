@@ -15,6 +15,8 @@
 
 TimeShiftedServiceDescriptor::TimeShiftedServiceDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(2);
+
 	referenceServiceId = UINT16(&buffer[2]);
 }
 

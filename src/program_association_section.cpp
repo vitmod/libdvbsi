@@ -42,11 +42,15 @@ uint16_t ProgramAssociation::getProgramMapPid(void) const
 
 ProgramAssociationSection::ProgramAssociationSection(const uint8_t * const buffer) : LongCrcSection(buffer)
 {
-	for (size_t i = 8; i < sectionLength - 1; i += 4) {
-		if (UINT16(&buffer[i]) == 0)
-			networks.push_back(new NetworkAssociation(&buffer[i]));
+	uint16_t pos = 8;
+	uint16_t bytesLeft = sectionLength > 9 ? sectionLength - 9 : 0;
+	while (bytesLeft > 3) {
+		if (UINT16(&buffer[pos]) == 0)
+			networks.push_back(new NetworkAssociation(&buffer[pos]));
 		else
-			programs.push_back(new ProgramAssociation(&buffer[i]));
+			programs.push_back(new ProgramAssociation(&buffer[pos]));
+		pos += 4;
+		bytesLeft -= 4;
 	}
 }
 

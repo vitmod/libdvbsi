@@ -15,8 +15,14 @@
 
 TimeAndDateSection::TimeAndDateSection(const uint8_t * const buffer) : ShortSection(buffer)
 {
-	utcTimeMjd = UINT16(&buffer[3]);
-	utcTimeBcd = (buffer[5] << 16) | UINT16(&buffer[6]);
+	if (sectionLength > 8) {
+		utcTimeMjd = UINT16(&buffer[3]);
+		utcTimeBcd = (buffer[5] << 16) | UINT16(&buffer[6]);
+	}
+	else {
+		utcTimeMjd=0;
+		utcTimeBcd=0;
+	}
 }
 
 uint16_t TimeAndDateSection::getUtcTimeMjd(void) const

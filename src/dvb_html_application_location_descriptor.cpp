@@ -14,7 +14,12 @@
 
 DvbHtmlApplicationLocationDescriptor::DvbHtmlApplicationLocationDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(1);
+
 	physicalRootLength = buffer[2];
+
+	ASSERT_MIN_DLEN(physicalRootLength + 1);
+
 	physicalRoot.assign((char *)&buffer[3], physicalRootLength);
 	initialPath.assign((char *)&buffer[physicalRootLength + 3], descriptorLength - physicalRootLength - 1);
 }

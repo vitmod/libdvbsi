@@ -14,7 +14,7 @@
 
 ConditionalAccessMessageSection::ConditionalAccessMessageSection(const uint8_t * const buffer) : ShortSection(buffer)
 {
-	for (size_t i = 8; i < sectionLength - 1; ++i)
-		caDataByte.push_back(buffer[i]);
+	if ( sectionLength > 1 )
+		for (size_t i = 8; i < sectionLength - 1; ++i)
+			caDataByte.push_back(buffer[i]);
 }
-

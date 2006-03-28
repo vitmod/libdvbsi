@@ -53,10 +53,17 @@ uint8_t ServiceDescription::getFreeCaMode(void) const
 
 ServiceDescriptionSection::ServiceDescriptionSection(const uint8_t * const buffer) : LongCrcSection (buffer)
 {
-	originalNetworkId = UINT16(&buffer[8]);
+	originalNetworkId = sectionLength > 9 ? UINT16(&buffer[8]) : 0;
 
-	for (size_t i = 11; i < sectionLength - 1; i += DVB_LENGTH(&buffer[i + 3]) + 5)
-		description.push_back(new ServiceDescription(&buffer[i]));
+	uint16_t pos = 11;
+	uint16_t bytesLeft = sectionLength > 12 ? sectionLength - 12 : 0;
+	uint16_t loopLength = 0;
+	
+	while (bytesLeft > 4 && bytesLeft >= (loopLength = 5 + DVB_LENGTH(&buffer[pos+3]))) {
+		description.push_back(new ServiceDescription(&buffer[pos]));
+		bytesLeft -= loopLength;
+		pos += loopLength;
+	}
 }
 
 ServiceDescriptionSection::~ServiceDescriptionSection(void)

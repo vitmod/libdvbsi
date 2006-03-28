@@ -62,8 +62,10 @@ const SubcellInfoList *CellFrequencyLink::getSubcells(void) const
 
 CellFrequencyLinkDescriptor::CellFrequencyLinkDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	for (size_t i = 0; i < descriptorLength; i += buffer[i + 10] + 6)
+	for (size_t i = 0; i < descriptorLength; i += buffer[i + 10] + 6) {
+		ASSERT_MIN_DLEN(i + buffer[i + 10] + 6);
 		cellFrequencyLinks.push_back(new CellFrequencyLink(&buffer[i + 2]));
+	}
 }
 
 CellFrequencyLinkDescriptor::~CellFrequencyLinkDescriptor(void)

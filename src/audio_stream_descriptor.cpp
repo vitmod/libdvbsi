@@ -14,6 +14,8 @@
 
 AudioStreamDescriptor::AudioStreamDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(1);
+
 	freeFormatFlag = (buffer[2] >> 7) & 0x01;
 	id = (buffer[2] >> 6) & 0x01;
 	layer = (buffer[2] >> 4) & 0x03;

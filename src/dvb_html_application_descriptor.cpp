@@ -15,9 +15,15 @@
 
 DvbHtmlApplicationDescriptor::DvbHtmlApplicationDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(1);
+
 	appidSetLength = buffer[2];
+
+	ASSERT_MIN_DLEN(appidSetLength + 1);
+
 	for (size_t i = 0; i < appidSetLength; i += 2)
 		applicationIds.push_back(r16(&buffer[i + 3]));
+
 	parameter.assign((char *)&buffer[appidSetLength + 3], descriptorLength - appidSetLength - 1);
 }
 

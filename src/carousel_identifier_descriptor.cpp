@@ -15,14 +15,19 @@
 
 CarouselIdentifierDescriptor::CarouselIdentifierDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(5);
+
 	carouselId = r32(&buffer[2]);
 	formatId = buffer[6];
-	switch ( formatId ) {
+
+	switch (formatId) {
 	case 0x00:
-		privateDataBytes.reserve(descriptorLength-5);
-		memcpy(&privateDataBytes[0], buffer+7, descriptorLength-5);	
+		privateDataBytes.reserve(descriptorLength - 5);
+		memcpy(&privateDataBytes[0], &buffer[7], descriptorLength - 5);
 		break;
 	case 0x01:
+		ASSERT_MIN_DLEN(21);
+
 		moduleVersion = buffer[7];
 		moduleId = r16(&buffer[8]);
 		blockSize = r16(&buffer[10]);
@@ -31,13 +36,14 @@ CarouselIdentifierDescriptor::CarouselIdentifierDescriptor(const uint8_t * const
 		originalSize = r32(&buffer[17]);
 		timeout = buffer[21];
 		objectKeyLength = buffer[22];
+
+		ASSERT_MIN_DLEN(objectKeyLength + 21);
+
 		objectKey.assign((char *)&buffer[23], objectKeyLength);
-		privateDataBytes.reserve(descriptorLength-objectKeyLength-21);
-		memcpy(&privateDataBytes[0], buffer+objectKeyLength+23, descriptorLength-objectKeyLength-21);	
+		privateDataBytes.reserve(descriptorLength - objectKeyLength - 21);
+		memcpy(&privateDataBytes[0], &buffer[objectKeyLength + 23], descriptorLength - objectKeyLength - 21);
 		break;
 	}
-	
-	
 }
 
 uint32_t CarouselIdentifierDescriptor::getCarouselId(void) const

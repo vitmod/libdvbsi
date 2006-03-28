@@ -15,6 +15,8 @@
 
 ModuleLinkDescriptor::ModuleLinkDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(3);
+
 	position = buffer[2];
 	moduleId = r16(&buffer[3]);
 }

@@ -11,18 +11,18 @@
  */
 #include "dvbsi++/related_content_descriptor.h"
 
-RelatedContentDescriptor::RelatedContentDescriptor(const uint8_t* const buffer) : Descriptor(buffer),
+RelatedContentDescriptor::RelatedContentDescriptor(const uint8_t * const buffer) : Descriptor(buffer),
 	bytes(descriptorLength)
 {
 
-	memcpy(&bytes[0], buffer+2, descriptorLength);
+	memcpy(&bytes[0], &buffer[2], descriptorLength);
 }
 
 RelatedContentDescriptor::~RelatedContentDescriptor()
 {
 }
 
-const RelatedContentByteVector* RelatedContentDescriptor::getRelatedContentBytes(void) const
+const RelatedContentByteVector *RelatedContentDescriptor::getRelatedContentBytes(void) const
 {
 	return &bytes;
 }

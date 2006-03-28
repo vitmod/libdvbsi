@@ -14,11 +14,22 @@
 
 DvbJApplicationLocationDescriptor::DvbJApplicationLocationDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	size_t headerLength = 2;
+	ASSERT_MIN_DLEN(headerLength);
+
 	baseDirectoryLength = buffer[2];
+
+	headerLength += baseDirectoryLength;
+	ASSERT_MIN_DLEN(headerLength);
+
 	baseDirectory.assign((char *)&buffer[3], baseDirectoryLength);
 	classpathExtensionLength = buffer[baseDirectoryLength + 3];
+
+	headerLength += classpathExtensionLength;
+	ASSERT_MIN_DLEN(headerLength);
+
 	classpathExtension.assign((char *)&buffer[baseDirectoryLength + 4], classpathExtensionLength);
-	initialClass.assign((char *)&buffer[baseDirectoryLength + classpathExtensionLength + 4], descriptorLength - baseDirectoryLength - classpathExtensionLength - 2);
+	initialClass.assign((char *)&buffer[baseDirectoryLength + classpathExtensionLength + 4], descriptorLength - headerLength);
 }
 
 const std::string &DvbJApplicationLocationDescriptor::getBaseDirectory(void) const

@@ -14,6 +14,8 @@
 
 LocationDescriptor::LocationDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(1);
+
 	locationTag = buffer[2];
 }
 

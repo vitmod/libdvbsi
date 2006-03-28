@@ -14,6 +14,9 @@
 
 TelephoneDescriptor::TelephoneDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	size_t headerLength = 3;
+	ASSERT_MIN_DLEN(headerLength);
+
 	foreignAvailability = (buffer[2] >> 5) & 0x01;
 	connectionType = buffer[2] & 0x1f;
 	countryPrefixLength = (buffer[3] >> 5) & 0x03;
@@ -21,6 +24,13 @@ TelephoneDescriptor::TelephoneDescriptor(const uint8_t * const buffer) : Descrip
 	operatorCodeLength = buffer[3] & 0x03;
 	nationalAreaCodeLength = (buffer[4] >> 4) & 0x07;
 	coreNumberLength = buffer[4] & 0x0f;
+
+	headerLength += countryPrefixLength;
+	headerLength += internationalAreaCodeLength;
+	headerLength += operatorCodeLength;
+	headerLength += nationalAreaCodeLength;
+	headerLength += coreNumberLength;
+	ASSERT_MIN_DLEN(headerLength);
 
 	uint16_t offset = 5;
 	countryPrefix.assign((char *)&buffer[offset], countryPrefixLength);

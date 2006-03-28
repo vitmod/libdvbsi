@@ -11,18 +11,18 @@
  */
 #include "dvbsi++/default_authority_descriptor.h"
 
-DefaultAuthorityDescriptor::DefaultAuthorityDescriptor(const uint8_t* const buffer) : Descriptor(buffer),
+DefaultAuthorityDescriptor::DefaultAuthorityDescriptor(const uint8_t * const buffer) : Descriptor(buffer),
 	bytes(descriptorLength)
 {
 
-	memcpy(&bytes[0], buffer+2, descriptorLength);
+	memcpy(&bytes[0], &buffer[2], descriptorLength);
 }
 
 DefaultAuthorityDescriptor::~DefaultAuthorityDescriptor()
 {
 }
 
-const DefaultAuthorityByteVector* DefaultAuthorityDescriptor::getAuthorityBytes(void) const
+const DefaultAuthorityByteVector *DefaultAuthorityDescriptor::getAuthorityBytes(void) const
 {
 	return &bytes;
 }

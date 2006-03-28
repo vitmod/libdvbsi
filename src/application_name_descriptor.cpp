@@ -31,8 +31,10 @@ const std::string &ApplicationName::getApplicationName(void) const
 
 ApplicationNameDescriptor::ApplicationNameDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	for (size_t i = 0; i < descriptorLength; i += buffer[i + 3] + 2)
+	for (size_t i = 0; i < descriptorLength; i += buffer[i + 3] + 2) {
+		ASSERT_MIN_DLEN(i + buffer[i + 3] + 2);
 		applicationNames.push_back(new ApplicationName(&buffer[i + 2]));
+	}
 }
 
 ApplicationNameDescriptor::~ApplicationNameDescriptor(void)

@@ -23,7 +23,7 @@ uint8_t ElementaryCellField::getElementaryCellId(void) const
 	return elementaryCellId;
 }
 
-MosaicCell::MosaicCell (const uint8_t * const buffer)
+MosaicCell::MosaicCell(const uint8_t * const buffer)
 {
 	logicalCellId = (buffer[0] >> 2) & 0x3F;
 	logicalCellPresentationInfo = buffer[1] & 0x07;

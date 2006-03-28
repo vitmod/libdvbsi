@@ -15,6 +15,8 @@
 
 DataBroadcastIdDescriptor::DataBroadcastIdDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(2);
+
 	dataBroadcastId = UINT16(&buffer[2]);
 
 	for (size_t i = 0; i < descriptorLength - 2; ++i)

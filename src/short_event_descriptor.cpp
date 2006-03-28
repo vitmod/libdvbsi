@@ -14,10 +14,21 @@
 
 ShortEventDescriptor::ShortEventDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	size_t headerLength = 5;
+	ASSERT_MIN_DLEN(headerLength);
+
 	iso639LanguageCode.assign((char *)&buffer[2], 3);
 	eventNameLength = buffer[5];
+
+	headerLength += eventNameLength;
+	ASSERT_MIN_DLEN(headerLength);
+
 	eventName.assign((char *)&buffer[6], eventNameLength);
 	textLength = buffer[6 + eventNameLength];
+
+	headerLength += textLength;
+	ASSERT_MIN_DLEN(headerLength);
+
 	text.assign((char *)&buffer[7 + eventNameLength], textLength);
 }
 

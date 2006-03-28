@@ -32,19 +32,28 @@ const std::string &ExtendedEvent::getItem(void) const
 
 ExtendedEventDescriptor::ExtendedEventDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	size_t headerLength = 6;
+	ASSERT_MIN_DLEN(headerLength);
+
 	descriptorNumber = (buffer[2] >> 4) & 0x0f;
 	lastDescriptorNumber = buffer[2] & 0x0f;
 	iso639LanguageCode.assign((char *)&buffer[3], 3);
 	lengthOfItems = buffer[6];
 
-	ExtendedEvent *e;
+	headerLength += lengthOfItems;
+	ASSERT_MIN_DLEN(headerLength);
 
+	ExtendedEvent *e;
 	for (size_t i = 0; i < lengthOfItems; i += e->itemDescriptionLength + e->itemLength + 2) {
 		e = new ExtendedEvent(&buffer[i + 7]);
 		items.push_back(e);
 	}
 
 	textLength = buffer[lengthOfItems + 7];
+
+	headerLength += textLength;
+	ASSERT_MIN_DLEN(headerLength);
+
 	text.assign((char *)&buffer[lengthOfItems + 8], textLength);
 }
 

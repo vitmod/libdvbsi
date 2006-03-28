@@ -31,8 +31,10 @@ uint8_t ApplicationSignalling::getAitVersionNumber(void) const
 
 ApplicationSignallingDescriptor::ApplicationSignallingDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	for (size_t i = 0; i < descriptorLength; i += 3)
+	for (size_t i = 0; i < descriptorLength; i += 3) {
+		ASSERT_MIN_DLEN(i + 3);
 		applicationSignallings.push_back(new ApplicationSignalling(&buffer[i + 2]));
+	}
 }
 
 ApplicationSignallingDescriptor::~ApplicationSignallingDescriptor(void)

@@ -42,8 +42,10 @@ uint8_t ContentClassification::getUserNibble2(void) const
 
 ContentDescriptor::ContentDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	for (size_t i = 0; i < descriptorLength; i += 2)
+	for (size_t i = 0; i < descriptorLength; i += 2) {
+		ASSERT_MIN_DLEN(i + 2);
 		classifications.push_back(new ContentClassification(&buffer[i + 2]));
+	}
 }
 
 ContentDescriptor::~ContentDescriptor(void)

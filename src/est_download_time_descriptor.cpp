@@ -15,6 +15,8 @@
 
 EstDownloadTimeDescriptor::EstDownloadTimeDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
+	ASSERT_MIN_DLEN(4);
+
 	estDownloadTime = r32(&buffer[2]);
 }
 

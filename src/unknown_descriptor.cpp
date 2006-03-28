@@ -12,15 +12,7 @@
 
 #include <dvbsi++/unknown_descriptor.h>
 
-UnknownDescriptor::UnknownDescriptor(const uint8_t * const buffer) : Descriptor(buffer), dataBytes(descriptorLength)
+UnknownDescriptor::UnknownDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 {
-	memcpy(&dataBytes[0], buffer+2, descriptorLength);
-}
-
-size_t UnknownDescriptor::writeToBuffer(uint8_t * const buffer) const
-{
-	Descriptor::writeToBuffer(buffer);
-	memcpy(buffer+2, &dataBytes[0], descriptorLength);
-	return 2 + descriptorLength;
 }
 
