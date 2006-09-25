@@ -12,6 +12,7 @@
 
 #include <dvbsi++/aac_descriptor.h>
 #include <dvbsi++/ac3_descriptor.h>
+#include <dvbsi++/adaptation_field_data_descriptor.h>
 #include <dvbsi++/ancillary_data_descriptor.h>
 #include <dvbsi++/announcement_support_descriptor.h>
 #include <dvbsi++/application_descriptor.h>
@@ -290,6 +291,9 @@ Descriptor *DescriptorContainer::descriptorSi(const uint8_t * const buffer, bool
 
 	case APPLICATION_SIGNALLING_DESCRIPTOR:
 		return new ApplicationSignallingDescriptor(buffer);
+
+	case ADAPTATION_FIELD_DATA_DESCRIPTOR:
+		return new AdaptationFieldDataDescriptor(buffer);
 
 	case SERVICE_IDENTIFIER_DESCRIPTOR:
 		return new ServiceIdentifierDescriptor(buffer);
