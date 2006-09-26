@@ -18,6 +18,10 @@ AdaptationFieldDataDescriptor::AdaptationFieldDataDescriptor(const uint8_t* cons
 	adaptationFieldDataIdentifier = buffer[2];
 }
 
+AdaptationFieldDataDescriptor::~AdaptationFieldDataDescriptor()
+{
+}
+
 uint8_t AdaptationFieldDataDescriptor::getAdaptationFieldDataIdentifier(void) const
 {
 	return adaptationFieldDataIdentifier;
