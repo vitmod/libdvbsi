@@ -45,6 +45,8 @@ class BouquetAssociationSection : public LongCrcSection , public DescriptorConta
 		static const enum PacketId PID = PID_BAT;
 		static const enum TableId TID = TID_BAT;
 		static const uint32_t TIMEOUT = 12000;
+
+		const BouquetAssociationList *getBouquets(void) const;
 };
 
 typedef std::list<BouquetAssociationSection *> BouquetAssociationSectionList;

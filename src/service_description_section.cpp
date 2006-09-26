@@ -58,7 +58,7 @@ ServiceDescriptionSection::ServiceDescriptionSection(const uint8_t * const buffe
 	uint16_t pos = 11;
 	uint16_t bytesLeft = sectionLength > 12 ? sectionLength - 12 : 0;
 	uint16_t loopLength = 0;
-	
+
 	while (bytesLeft > 4 && bytesLeft >= (loopLength = 5 + DVB_LENGTH(&buffer[pos+3]))) {
 		description.push_back(new ServiceDescription(&buffer[pos]));
 		bytesLeft -= loopLength;
