@@ -23,6 +23,16 @@ BouquetAssociation::BouquetAssociation(const uint8_t * const buffer)
 		descriptor(&buffer[i], SCOPE_SI);
 }
 
+uint16_t BouquetAssociation::getTransportStreamId(void) const
+{
+	return transportStreamId;
+}
+
+uint16_t BouquetAssociation::getOriginalNetworkId(void) const
+{
+	return originalNetworkId;
+}
+
 BouquetAssociationSection::BouquetAssociationSection(const uint8_t * const buffer) : LongCrcSection(buffer)
 {
 	bouquetDescriptorsLength = sectionLength > 9 ? DVB_LENGTH(&buffer[8]) : 0;

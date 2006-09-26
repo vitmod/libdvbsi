@@ -25,6 +25,9 @@ class BouquetAssociation : public DescriptorContainer
 
 	public:
 		BouquetAssociation(const uint8_t * const buffer);
+
+		uint16_t getTransportStreamId(void) const;
+		uint16_t getOriginalNetworkId(void) const;
 };
 
 typedef std::list<BouquetAssociation *> BouquetAssociationList;
