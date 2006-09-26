@@ -62,7 +62,7 @@ RunningStatusSection::~RunningStatusSection(void)
 	}
 }
 
-const RunningStatusList& RunningStatusSection::getRunningStatus() const
+const RunningStatusList* RunningStatusSection::getRunningStatus() const
 {
-	return runningStatus;
+	return &runningStatus;
 }

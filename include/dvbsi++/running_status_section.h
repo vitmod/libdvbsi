@@ -50,7 +50,7 @@ class RunningStatusSection : public ShortSection
 		static const enum TableId TID = TID_RST;
 		static const uint32_t TIMEOUT = 36000;
 
-		const RunningStatusList& getRunningStatus(void) const;
+		const RunningStatusList* getRunningStatus(void) const;
 };
 
 typedef std::list<RunningStatusSection*> RunningStatusSectionList;
