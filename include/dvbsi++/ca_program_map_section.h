@@ -77,6 +77,7 @@ class CaProgramMapSection : public DescriptorContainer
 
 		bool append(const ProgramMapSection * const pmt);
 		void injectDescriptor(const uint8_t *descriptor, bool back=true);
+		void setListManagement(const uint8_t listmanagement);
 		size_t writeToBuffer(uint8_t * const buffer) const;
 		ssize_t writeToFile(int fd) const;
 };

@@ -163,6 +163,11 @@ void CaProgramMapSection::injectDescriptor(const uint8_t *descr, bool back)
 	length += len;
 }
 
+void CaProgramMapSection::setListManagement(const uint8_t listmanagement)
+{
+	caPmtListManagement = listmanagement;
+}
+
 size_t CaProgramMapSection::writeToBuffer(uint8_t * const buffer) const
 {
 	unsigned programInfoLength = this->programInfoLength;
