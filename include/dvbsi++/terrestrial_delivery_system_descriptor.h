@@ -19,9 +19,12 @@ class TerrestrialDeliverySystemDescriptor : public Descriptor
 {
 	protected:
 		unsigned centreFrequency			: 32;
-		unsigned bandwidth				: 3;
+		unsigned bandwidth					: 3;
+		unsigned priority					: 1;
+		unsigned timeSlicingIndicator		: 1;
+		unsigned mpeFecIndicator			: 1;
 		unsigned constellation				: 2;
-		unsigned hierarchyInformation			: 3;
+		unsigned hierarchyInformation		: 3;
 		unsigned codeRateHpStream			: 3;
 		unsigned codeRateLpStream			: 3;
 		unsigned guardInterval				: 2;
@@ -33,6 +36,9 @@ class TerrestrialDeliverySystemDescriptor : public Descriptor
 
 		uint32_t getCentreFrequency(void) const;
 		uint8_t getBandwidth(void) const;
+		uint8_t getPriority(void) const;
+		uint8_t getTimeSlicingIndicator(void) const;
+		uint8_t getMpeFecIndicator(void) const;
 		uint8_t getConstellation(void) const;
 		uint8_t getHierarchyInformation(void) const;
 		uint8_t getCodeRateHpStream(void) const;

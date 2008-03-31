@@ -19,6 +19,9 @@ TerrestrialDeliverySystemDescriptor::TerrestrialDeliverySystemDescriptor(const u
 
 	centreFrequency = UINT32(&buffer[2]);
 	bandwidth = (buffer[6] >> 5) & 0x07;
+	priority = (buffer[6] >> 4) & 0x01;
+	timeSlicingIndicator = (buffer[6] >> 3) & 0x01;
+	mpeFecIndicator = (buffer[6] >> 2) & 0x01;
 	constellation = (buffer[7] >> 6) & 0x03;
 	hierarchyInformation = (buffer[7] >> 3) & 0x07;
 	codeRateHpStream = buffer[7] & 0x07;
@@ -36,6 +39,21 @@ uint32_t TerrestrialDeliverySystemDescriptor::getCentreFrequency(void) const
 uint8_t TerrestrialDeliverySystemDescriptor::getBandwidth(void) const
 {
 	return bandwidth;
+}
+
+uint8_t TerrestrialDeliverySystemDescriptor::getPriority(void) const
+{
+	return priority;
+}
+
+uint8_t TerrestrialDeliverySystemDescriptor::getTimeSlicingIndicator(void) const
+{
+	return timeSlicingIndicator;
+}
+
+uint8_t TerrestrialDeliverySystemDescriptor::getMpeFecIndicator(void) const
+{
+	return mpeFecIndicator;
 }
 
 uint8_t TerrestrialDeliverySystemDescriptor::getConstellation(void) const
@@ -72,4 +90,3 @@ uint8_t TerrestrialDeliverySystemDescriptor::getOtherFrequencyFlag(void) const
 {
 	return otherFrequencyFlag;
 }
-
