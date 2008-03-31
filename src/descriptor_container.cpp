@@ -83,11 +83,13 @@
 #include <dvbsi++/satellite_delivery_system_descriptor.h>
 #include <dvbsi++/s2_satellite_delivery_system_descriptor.h>
 #include <dvbsi++/scrambling_descriptor.h>
+#include <dvbsi++/service_availability_descriptor.h>
 #include <dvbsi++/service_descriptor.h>
 #include <dvbsi++/service_identifier_descriptor.h>
 #include <dvbsi++/service_list_descriptor.h>
 #include <dvbsi++/service_move_descriptor.h>
 #include <dvbsi++/short_event_descriptor.h>
+#include <dvbsi++/short_smoothing_buffer_descriptor.h>
 #include <dvbsi++/stream_identifier_descriptor.h>
 #include <dvbsi++/stuffing_descriptor.h>
 #include <dvbsi++/subtitling_descriptor.h>
@@ -336,6 +338,12 @@ Descriptor *DescriptorContainer::descriptorSi(const uint8_t * const buffer, bool
 
 	case DSNG_DESCRIPTOR:
 		return new DSNGDescriptor(buffer);
+
+	case SERVICE_AVAILABILITY_DESCRIPTOR:
+		return new ServiceAvailabilityDescriptor(buffer);
+
+	case SHORT_SMOOTHING_BUFFER_DESCRIPTOR:
+		return new ShortSmoothingBufferDescriptor(buffer);
 
 	default:
 		return new Descriptor(buffer);
