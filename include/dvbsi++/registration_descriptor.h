@@ -27,7 +27,6 @@ class RegistrationDescriptor : public Descriptor
 
 	public:
 		RegistrationDescriptor(const uint8_t * const buffer);
-		~RegistrationDescriptor(void);
 
 		uint32_t getFormatIdentifier(void) const;
 		const AdditionalIdentificationInfoVector *getAdditionalIdentificationInfo(void) const;

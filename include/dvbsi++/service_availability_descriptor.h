@@ -26,7 +26,6 @@ class ServiceAvailabilityDescriptor : public Descriptor
 
 	public:
 		ServiceAvailabilityDescriptor(const uint8_t* const buffer);
-		virtual ~ServiceAvailabilityDescriptor();
 
 		uint8_t getAvailabilityFlag() const;
 		const CellIdList *getCellIds(void) const;
