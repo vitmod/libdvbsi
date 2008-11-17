@@ -32,7 +32,7 @@ SatelliteDeliverySystemDescriptor::SatelliteDeliverySystemDescriptor(const uint8
 	orbitalPosition = UINT16(&buffer[6]);
 	westEastFlag = (buffer[8] >> 7) & 0x01;
 	polarization = (buffer[8] >> 5) & 0x03;
-	rollOff = (buffer[8] >> 4) & 0x03;
+	rollOff = (buffer[8] >> 3) & 0x03;
 	modulationSystem = (buffer[8] >> 2) & 0x01;
 	modulationType = (buffer[8]) & 0x03;
 
