@@ -29,6 +29,8 @@
 #include <unistd.h>
 #endif
 
+#include <algorithm>
+#include <cstring>
 #include <string>
 #include <list>
 #include <vector>
