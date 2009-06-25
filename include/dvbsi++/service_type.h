@@ -13,7 +13,7 @@
 #define __service_type_h__
 
 enum ServiceType {
-	/* 0x00 - 0x1B: ETSI EN 300 468 V1.7.1 (2006-05)*/
+	/* 0x00 - 0x1B: ETSI EN 300 468 V1.9.1 (2009-03)*/
 	ST_RESERVED				= 0x00,
 	ST_DIGITAL_TELEVISION_SERVICE		= 0x01,
 	ST_DIGITAL_RADIO_SOUND_SERVICE		= 0x02,
