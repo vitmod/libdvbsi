@@ -103,6 +103,15 @@ enum SiDescriptorTag {
 	FORBIDDEN_DESCRIPTOR				= 0xFF
 };
 
+enum SiDescriptorTagExtension {
+	/* 0x00 - 0x7F: ETSI EN 300 468 V1.9.1 (2009-03) */
+	IMAGE_ICON_DESCRIPTOR				= 0x00,
+	CPCM_DELIVERY_SIGNALLING_DESCRIPTOR		= 0x01,	/* TS/TR 102 825 */
+	CP_DESCRIPTOR					= 0x02,	/* TS/TR 102 825 */
+	CP_IDENTIFIER_DESCRIPTOR			= 0x03, /* TS/TR 102 825 */
+	/* 0x80 - 0xFF: User defined */
+};
+
 enum CarouselDescriptorTag {
 	/* ETSI EN 301 192 V1.3.1 (2003-05) */
 	/* 0x00: Reserved */
