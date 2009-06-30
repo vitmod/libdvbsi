@@ -25,6 +25,7 @@ class DescriptorContainer
 {
 	private:
 		Descriptor *descriptorSi(const uint8_t * const buffer, bool back = true);
+		Descriptor *descriptorSiExtended(const uint8_t * const buffer, bool back = true);
 		Descriptor *descriptorCarousel(const uint8_t * const buffer, bool back = true);
 		Descriptor *descriptorMhp(const uint8_t * const buffer, bool back = true);
 
