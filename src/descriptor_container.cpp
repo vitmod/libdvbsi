@@ -109,6 +109,7 @@
 #include <dvbsi++/vbi_teletext_descriptor.h>
 #include <dvbsi++/video_stream_descriptor.h>
 #include <dvbsi++/video_window_descriptor.h>
+#include <dvbsi++/xait_location_descriptor.h>
 
 DescriptorContainer::~DescriptorContainer(void)
 {
@@ -310,10 +311,8 @@ Descriptor *DescriptorContainer::descriptorSi(const uint8_t * const buffer, bool
 		return new DTSDescriptor(buffer);
 	case AAC_DESCRIPTOR:
 		return new AACDescriptor(buffer);
-#if 0
 	case XAIT_LOCATION_DESCRIPTOR:
-		return new XaitDescriptor(buffer);
-#endif
+		return new XaitLocationDescriptor(buffer);
 	case FTA_CONTENT_MANAGEMENT_DESCRIPTOR:
 		return new FtaContentManagementDescriptor(buffer);
 	case EXTENSION_DESCRIPTOR:
