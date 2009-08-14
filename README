@@ -2,8 +2,16 @@ libdvbsi++ - A free DVB SI parser library written in C++
 --------------------------------------------------------
 
 Availability:
-  You can get released versions from http://www.saftware.de/libdvbsi++/
-  or download CVS snapshots from cvs.tuxbox.org.
+  You can download released versions from http://www.saftware.de/libdvbsi++/
+  or clone the development repository using Git:
+
+    http://git.opendreambox.org/?p=obi/libdvbsi%2B%2B.git;a=summary
+    git clone git://git.opendreambox.org/git/obi/libdvbsi++.git
+
+  CVS history up to version 0.3.4 is available at cvs.tuxbox.org:
+
+    http://cvs.tuxbox.org/cgi-bin/viewcvs.cgi/tuxbox/apps/dvb/libdvbsi%2B%2B/
+    cvs -danoncvs@cvs.tuxbox.org:/cvs/tuxbox -z3 co -P apps/dvb/libdvbsi++
 
 License:
   LGPL 2.1. See the file 'COPYING' in the top level directory

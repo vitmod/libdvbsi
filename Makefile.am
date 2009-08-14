@@ -21,8 +21,11 @@ release: $(DIST_ARCHIVES) $(DIST_HASHES) $(DIST_SIGNATURES)
 endif
 endif
 
-if HAVE_CVS2CL
-changelog:
-	@cvs2cl -r --FSF --usermap AUTHORS -S --utc
+if HAVE_GIT
+dist-hook:
+	@if test -d "$(top_srcdir)/.git"; then \
+		( $(top_srcdir)/missing --run git --git-dir=$(top_srcdir)/.git log --shortstat && \
+		  cat $(top_srcdir)/ChangeLog ) > $(distdir)/ChangeLog; \
+	fi
 endif
 
