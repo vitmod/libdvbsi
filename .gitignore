@@ -1,0 +1,16 @@
+aclocal.m4
+build-stamp
+config.guess
+config.log
+config.status
+config.sub
+configure
+configure-stamp
+depcomp
+install-sh
+libdvbsi++.pc
+libtool
+ltmain.sh
+Makefile
+Makefile.in
+missing

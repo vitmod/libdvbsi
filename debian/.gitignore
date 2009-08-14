@@ -1,0 +1,7 @@
+*.debhelper
+*.debhelper.log
+files
+libdvbsi++1
+libdvbsi++-dev
+*.substvars
+tmp

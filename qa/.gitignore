@@ -1,0 +1,4 @@
+*.cpp
+.deps
+*.o
+test_si_descriptors
