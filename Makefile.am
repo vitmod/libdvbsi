@@ -3,7 +3,7 @@ SUBDIRS = debian include qa src
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libdvbsi++.pc
 
-EXTRA_DIST = autogen.sh
+EXTRA_DIST = autogen.sh genmakefileam
 
 if HAVE_GNUPG
 if HAVE_MD5SUM
