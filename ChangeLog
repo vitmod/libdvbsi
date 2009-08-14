@@ -1,3 +1,78 @@
+2009-06-30  Marcel Siegert <mws@twisted-brains.org>
+
+	* include/dvbsi++/Makefile.am (1.10),
+	include/dvbsi++/cp_descriptor.h (1.1),
+	include/dvbsi++/cp_identifier_descriptor.h (1.1),
+	include/dvbsi++/cpcm_delivery_signalling_descriptor.h (1.1),
+	include/dvbsi++/descriptor_container.h (1.7),
+	include/dvbsi++/descriptor_tag.h (1.9),
+	include/dvbsi++/image_icon_descriptor.h (1.1), src/Makefile.am
+	(1.18), src/cp_descriptor.cpp (1.1),
+	src/cp_identifier_descriptor.cpp (1.1),
+	src/cpcm_delivery_signalling_descriptor.cpp (1.1),
+	src/descriptor_container.cpp (1.16), src/image_icon_descriptor.cpp
+	(1.1):
+
+
+	added
+	---------------------------------------------------------------------------
+	cp_descriptor cp_identifier_descriptor both are identical to the
+	old ca_descriptor/ca_identifier_descriptor
+
+	cpcm_delivery_signalling_descriptor
+
+	and finally the image_icon_descriptor
+	---------------------------------------------------------------------------
+
+	adapted the descriptor container still to return descriptors, even
+	if those are extended ones.
+
+	---------------------------------------------------------------------------
+
+2009-06-30  Marcel Siegert <mws@twisted-brains.org>
+
+	* include/dvbsi++/Makefile.am (1.9),
+	include/dvbsi++/xait_location_descriptor.h (1.1), src/Makefile.am
+	(1.17), src/descriptor_container.cpp (1.15),
+	src/xait_location_descriptor.cpp (1.1):
+
+	add xait_location_descriptor
+
+2009-06-29  Marcel Siegert <mws@twisted-brains.org>
+
+	* include/dvbsi++/Makefile.am (1.8),
+	include/dvbsi++/fta_content_management_descriptor.h (1.1),
+	src/Makefile.am (1.16), src/descriptor_container.cpp (1.14),
+	src/fta_content_management_descriptor.cpp (1.1):
+
+	add fta_content_managing_descriptor
+
+2009-06-25  Andreas Oberritter <obi@saftware.de>
+
+	* src/descriptor_container.cpp (1.13):
+
+	SI: sort descriptor tags, add unimplemented descriptors
+
+2009-06-25  Andreas Oberritter <obi@saftware.de>
+
+	* include/dvbsi++/descriptor_tag.h (1.8):
+
+	add descriptor tags for extension_descriptor
+
+2009-06-25  Andreas Oberritter <obi@saftware.de>
+
+	* include/dvbsi++/descriptor_tag.h (1.7),
+	include/dvbsi++/packet_id.h (1.4), include/dvbsi++/service_type.h
+	(1.6), include/dvbsi++/table_id.h (1.6):
+
+	update identifiers to ETSI EN 300 468 V1.9.1
+
+2009-02-23  Andreas Oberritter <obi@saftware.de>
+
+	* ChangeLog (1.5):
+
+	update changelog for release of 0.3.4
+
 2009-02-23  Andreas Oberritter <obi@saftware.de>
 
 	* Makefile.am (1.9):
