@@ -1,0 +1,12 @@
+libdvbsi++ (0.3.4-1) unstable; urgency=low
+
+  * Increased version number after release of 0.3.3
+
+ -- Andreas Oberritter <obi@saftware.de>  Tue, 25 Mar 2008 22:30:25 +0100
+
+libdvbsi++ (0.3.3-1) unstable; urgency=low
+
+  * Initial Debian package
+
+ -- Andreas Oberritter <obi@saftware.de>  Mon, 24 Mar 2008 15:24:35 +0100
+
