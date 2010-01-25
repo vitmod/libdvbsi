@@ -71,6 +71,7 @@ libdvbsi___la_SOURCES = \
 	linkage_descriptor.cpp \
 	local_time_offset_descriptor.cpp \
 	location_descriptor.cpp \
+	logical_channel_descriptor.cpp \
 	long_crc_section.cpp \
 	long_section.cpp \
 	module_link_descriptor.cpp \

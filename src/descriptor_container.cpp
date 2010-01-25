@@ -70,6 +70,7 @@
 #include <dvbsi++/linkage_descriptor.h>
 #include <dvbsi++/local_time_offset_descriptor.h>
 #include <dvbsi++/location_descriptor.h>
+#include <dvbsi++/logical_channel_descriptor.h>
 #include <dvbsi++/module_link_descriptor.h>
 #include <dvbsi++/mosaic_descriptor.h>
 #include <dvbsi++/multilingual_bouquet_name_descriptor.h>
@@ -321,6 +322,10 @@ Descriptor *DescriptorContainer::descriptorSi(const uint8_t * const buffer, bool
 		return new FtaContentManagementDescriptor(buffer);
 	case EXTENSION_DESCRIPTOR:
 		return descriptorSiExtended(buffer);
+	case LOGICAL_CHANNEL_DESCRIPTOR:
+		return new LogicalChannelDescriptor(buffer);
+	case HD_SIMULCAST_LOGICAL_CHANNEL_DESCRIPTOR:
+		return new LogicalChannelDescriptor(buffer);
 	default:
 		return new Descriptor(buffer);
 	}
