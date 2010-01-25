@@ -72,6 +72,7 @@ pkginclude_HEADERS = \
 	linkage_descriptor.h \
 	local_time_offset_descriptor.h \
 	location_descriptor.h \
+	logical_channel_descriptor.h \
 	long_crc_section.h \
 	long_section.h \
 	module_link_descriptor.h \
