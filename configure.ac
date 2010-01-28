@@ -2,6 +2,7 @@ AC_INIT([libdvbsi++],[0.3.4],[obi@saftware.de],[libdvbsi++])
 AM_INIT_AUTOMAKE([dist-bzip2])
 
 AC_PROG_CXX
+AC_PROG_LIBTOOL
 LT_INIT
 AC_CHECK_HEADERS([byteswap.h endian.h])
 AC_PATH_PROG(CXXTEST, cxxtestgen.pl, no)
