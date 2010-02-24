@@ -16,7 +16,7 @@ AM_CONDITIONAL(HAVE_MD5SUM, test "$MD5SUM" != "no")
 
 dnl - If any interfaces have been added, removed, or changed since the last
 dnl   update, increment current, and set revision to 0.
-LT_CURRENT=0
+LT_CURRENT=1
 AC_SUBST([LT_CURRENT])
 dnl - If the library source code has changed at all since the last update,
 dnl   then increment revision (c:r:a becomes c:r+1:a).
