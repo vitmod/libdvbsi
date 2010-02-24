@@ -1,3 +1,9 @@
+libdvbsi++ (0.3.4-2) unstable; urgency=low
+
+  * Updated debian scripts
+
+ -- Andreas Oberritter <obi@saftware.de>  Wed, 24 Feb 2010 19:23:36 +0000
+
 libdvbsi++ (0.3.4-1) unstable; urgency=low
 
   * Increased version number after release of 0.3.3
