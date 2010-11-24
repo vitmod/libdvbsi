@@ -7,7 +7,7 @@ cd include/dvbsi++
 echo 'pkgincludedir = ${includedir}/dvbsi++' > Makefile.am
 printf "pkginclude_HEADERS =" >> Makefile.am
 
-for file in `ls -1 *.h | sort`; do
+for file in *.h; do
 	printf ' \\\n\t%s' $file >> Makefile.am
 done
 
@@ -19,12 +19,12 @@ cd -
 
 cd src
 
-echo 'AM_CPPFLAGS = -I$(top_srcdir)/include' > Makefile.am
+echo 'AM_CPPFLAGS = -I$(top_srcdir)/include -include $(top_builddir)/libdvbsi++-config.h' > Makefile.am
 echo 'lib_LTLIBRARIES = libdvbsi++.la' >> Makefile.am
 echo 'libdvbsi___la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)' >> Makefile.am
 printf "libdvbsi___la_SOURCES =" >> Makefile.am
 
-for file in `ls -1 *.cpp | sort`; do
+for file in *.cpp; do
 	printf ' \\\n\t%s' $file >> Makefile.am
 done
 

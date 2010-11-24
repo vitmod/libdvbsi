@@ -1,4 +1,4 @@
-AM_CPPFLAGS = -I$(top_srcdir)/include
+AM_CPPFLAGS = -I$(top_srcdir)/include -include $(top_builddir)/libdvbsi++-config.h
 lib_LTLIBRARIES = libdvbsi++.la
 libdvbsi___la_LDFLAGS = -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
 libdvbsi___la_SOURCES = \

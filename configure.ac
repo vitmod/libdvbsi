@@ -1,10 +1,21 @@
-AC_INIT([libdvbsi++],[0.3.4],[obi@saftware.de],[libdvbsi++])
-AM_INIT_AUTOMAKE([dist-bzip2])
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
 
+AC_INIT([libdvbsi++],[0.3.5],[obi@saftware.de],[libdvbsi++])
+AM_INIT_AUTOMAKE([dist-bzip2 no-define])
+AC_CONFIG_SRCDIR([src/descriptor.cpp])
+AC_CONFIG_HEADERS([libdvbsi++-config.h])
+
+# Silent rules are available since 1.11, but older versions
+# are still in use. So don't use them unconditionally.
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+
+# Checks for programs.
 AC_PROG_CXX
-AC_PROG_LIBTOOL
-LT_INIT
-AC_CHECK_HEADERS([byteswap.h endian.h])
+
+m4_ifdef([LT_INIT], [LT_INIT], [LT_INIT])
+AC_CONFIG_MACRO_DIR([m4])
+
 AC_PATH_PROG(CXXTEST, cxxtestgen.pl, no)
 AM_CONDITIONAL(HAVE_CXXTEST, test "$CXXTEST" != "no")
 AC_PATH_PROG(GIT, git, no)
@@ -13,6 +24,9 @@ AC_PATH_PROG(GNUPG, gpg, no)
 AM_CONDITIONAL(HAVE_GNUPG, test "$GNUPG" != "no")
 AC_PATH_PROG(MD5SUM, md5sum, no)
 AM_CONDITIONAL(HAVE_MD5SUM, test "$MD5SUM" != "no")
+
+# Checks for header files.
+AC_CHECK_HEADERS([byteswap.h endian.h])
 
 dnl - If any interfaces have been added, removed, or changed since the last
 dnl   update, increment current, and set revision to 0.

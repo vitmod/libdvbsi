@@ -1,3 +1,5 @@
+ACLOCAL_AMFLAGS = -I m4
+
 SUBDIRS = debian include qa src
 
 pkgconfigdir = $(libdir)/pkgconfig
@@ -7,8 +9,8 @@ EXTRA_DIST = autogen.sh genmakefileam
 
 if HAVE_GNUPG
 if HAVE_MD5SUM
-DIST_HASHES = $(addsuffix .md5,$(DIST_ARCHIVES))
-DIST_SIGNATURES = $(addsuffix .asc,$(DIST_ARCHIVES))
+DIST_HASHES = $(DIST_ARCHIVES:=.md5)
+DIST_SIGNATURES = $(DIST_ARCHIVES:=.asc)
 
 $(DIST_HASHES): $(DIST_ARCHIVES)
 	@list='$(DIST_ARCHIVES)'; for i in $$list; do md5sum $$i > $$i.md5; done
@@ -22,10 +24,10 @@ endif
 endif
 
 if HAVE_GIT
+GIT_DIR = $(top_srcdir)/.git
+
 dist-hook:
-	@if test -d "$(top_srcdir)/.git"; then \
-		( $(top_srcdir)/missing --run git --git-dir=$(top_srcdir)/.git log --shortstat && \
-		  cat $(top_srcdir)/ChangeLog ) > $(distdir)/ChangeLog; \
+	if test -d $(GIT_DIR); then \
+		$(GIT) --git-dir=$(GIT_DIR) log --shortstat > $(distdir)/ChangeLog; \
 	fi
 endif
-
