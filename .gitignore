@@ -8,12 +8,15 @@ config.sub
 configure
 configure-stamp
 depcomp
+INSTALL
 install-sh
 libdvbsi++.pc
+libdvbsi++-config.h*
 libtool
 ltmain.sh
 Makefile
 Makefile.in
 missing
-*.tar.bz2
-*.tar.gz
+stamp-h1
+*.tar.bz2*
+*.tar.gz*
