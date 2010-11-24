@@ -1,23 +1,26 @@
 Source: libdvbsi++
 Priority: extra
 Maintainer: Andreas Oberritter <obi@saftware.de>
-Build-Depends: debhelper (>= 5)
-Standards-Version: 3.8.0
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.9.1
 Section: libs
+Homepage: http://www.saftware.de/
+Vcs-Git: git://git.opendreambox.org/git/obi/libdvbsi++.git
+Vcs-Browser: http://git.opendreambox.org/?p=obi/libdvbsi%2B%2B.git
 
 Package: libdvbsi++-dev
 Section: libdevel
 Architecture: any
-Depends: libdvbsi++1 (= ${binary:Version})
-Description: A free DVB SI parser library written in C++
+Depends: libdvbsi++1 (= ${binary:Version}), ${misc:Depends}
+Description: A free DVB SI parser library written in C++ (development files)
  With libdvbsi++ you can convert raw DVB service information
  to a set of C++ objects, removing the need to parse data
- manually.
+ manually. This package includes the development support
+ files.
 
 Package: libdvbsi++1
-Section: libs
 Architecture: any
-Depends: ${shlibs:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: A free DVB SI parser library written in C++
  With libdvbsi++ you can convert raw DVB service information
  to a set of C++ objects, removing the need to parse data
