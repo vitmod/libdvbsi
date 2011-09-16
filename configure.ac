@@ -13,7 +13,7 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 # Checks for programs.
 AC_PROG_CXX
 
-m4_ifdef([LT_INIT], [LT_INIT], [LT_INIT])
+m4_ifdef([LT_INIT], [LT_INIT], [AC_PROG_LIBTOOL])
 AC_CONFIG_MACRO_DIR([m4])
 
 AC_PATH_PROG(CXXTEST, cxxtestgen.pl, no)
