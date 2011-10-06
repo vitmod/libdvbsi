@@ -13,6 +13,7 @@ pkginclude_HEADERS = \
 	application_profile.h \
 	application_signalling_descriptor.h \
 	application_storage_descriptor.h \
+	application_usage_descriptor.h \
 	audio_stream_descriptor.h \
 	bouquet_association_section.h \
 	bouquet_name_descriptor.h \
@@ -63,6 +64,7 @@ pkginclude_HEADERS = \
 	external_application_authorisation_descriptor.h \
 	frequency_list_descriptor.h \
 	fta_content_management_descriptor.h \
+	graphics_constraints_descriptor.h \
 	group_link_descriptor.h \
 	image_icon_descriptor.h \
 	info_descriptor.h \
@@ -111,6 +113,8 @@ pkginclude_HEADERS = \
 	short_event_descriptor.h \
 	short_section.h \
 	short_smoothing_buffer_descriptor.h \
+	simple_application_location_descriptor.h \
+	simple_application_boundary_descriptor.h \
 	stream_identifier_descriptor.h \
 	stream_type.h \
 	stuffing_descriptor.h \

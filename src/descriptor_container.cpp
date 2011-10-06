@@ -20,6 +20,7 @@
 #include <dvbsi++/application_name_descriptor.h>
 #include <dvbsi++/application_signalling_descriptor.h>
 #include <dvbsi++/application_storage_descriptor.h>
+#include <dvbsi++/application_usage_descriptor.h>
 #include <dvbsi++/audio_stream_descriptor.h>
 #include <dvbsi++/bouquet_name_descriptor.h>
 #include <dvbsi++/ca_descriptor.h>
@@ -61,6 +62,7 @@
 #include <dvbsi++/external_application_authorisation_descriptor.h>
 #include <dvbsi++/frequency_list_descriptor.h>
 #include <dvbsi++/fta_content_management_descriptor.h>
+#include <dvbsi++/graphics_constraints_descriptor.h>
 #include <dvbsi++/group_link_descriptor.h>
 #include <dvbsi++/image_icon_descriptor.h>
 #include <dvbsi++/info_descriptor.h>
@@ -97,6 +99,8 @@
 #include <dvbsi++/service_move_descriptor.h>
 #include <dvbsi++/short_event_descriptor.h>
 #include <dvbsi++/short_smoothing_buffer_descriptor.h>
+#include <dvbsi++/simple_application_location_descriptor.h>
+#include <dvbsi++/simple_application_boundary_descriptor.h>
 #include <dvbsi++/stream_identifier_descriptor.h>
 #include <dvbsi++/stuffing_descriptor.h>
 #include <dvbsi++/subtitling_descriptor.h>
@@ -448,6 +452,18 @@ Descriptor *DescriptorContainer::descriptorMhp(const uint8_t * const buffer, boo
 
 	case PRIVATE_DATA_SPECIFIER_DESCRIPTOR:
 		return new PrivateDataSpecifierDescriptor(buffer);
+
+	case GRAPHICS_CONSTRAINTS_DESCRIPTOR:
+		return new GraphicsConstraintsDescriptor(buffer);
+
+	case SIMPLE_APPLICATION_LOCATION_DESCRIPTOR:
+		return new SimpleApplicationLocationDescriptor(buffer);
+
+	case APPLICATION_USAGE_DESCRIPTOR:
+		return new ApplicationUsageDescriptor(buffer);
+
+	case SIMPLE_APPLICATION_BOUNDARY_DESCRIPTOR:
+		return new SimpleApplicationBoundaryDescriptor(buffer);
 
 	default:
 		return new Descriptor(buffer);

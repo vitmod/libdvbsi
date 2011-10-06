@@ -15,6 +15,7 @@ libdvbsi___la_SOURCES = \
 	application_profile.cpp \
 	application_signalling_descriptor.cpp \
 	application_storage_descriptor.cpp \
+	application_usage_descriptor.cpp \
 	audio_stream_descriptor.cpp \
 	bouquet_association_section.cpp \
 	bouquet_name_descriptor.cpp \
@@ -63,6 +64,7 @@ libdvbsi___la_SOURCES = \
 	frequency_list_descriptor.cpp \
 	fta_content_management_descriptor.cpp \
 	group_link_descriptor.cpp \
+	graphics_constraints_descriptor.cpp \
 	image_icon_descriptor.cpp \
 	info_descriptor.cpp \
 	ip_signaling_descriptor.cpp \
@@ -108,6 +110,8 @@ libdvbsi___la_SOURCES = \
 	short_event_descriptor.cpp \
 	short_section.cpp \
 	short_smoothing_buffer_descriptor.cpp \
+	simple_application_location_descriptor.cpp \
+	simple_application_boundary_descriptor.cpp \
 	stream_identifier_descriptor.cpp \
 	stuffing_descriptor.cpp \
 	subtitling_descriptor.cpp \
