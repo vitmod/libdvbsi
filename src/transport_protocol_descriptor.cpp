@@ -16,10 +16,18 @@
 OcTransport::OcTransport(const uint8_t * const buffer)
 {
 	remoteConnection = (buffer[0] >> 7) & 0x01;
-	originalNetworkId = r16(&buffer[1]);
-	transportStreamId = r16(&buffer[3]);
-	serviceId = r16(&buffer[5]);
-	componentTag = buffer[7];
+	if (remoteConnection) {
+		originalNetworkId = r16(&buffer[1]);
+		transportStreamId = r16(&buffer[3]);
+		serviceId = r16(&buffer[5]);
+		componentTag = buffer[7];
+	}
+	else {
+		originalNetworkId =
+		transportStreamId =
+		serviceId = 0;
+		componentTag = buffer[1];
+	}
 }
 
 uint8_t OcTransport::getRemoteConnection(void) const
@@ -49,7 +57,7 @@ uint8_t OcTransport::getComponentTag(void) const
 
 Url::Url(const uint8_t * const buffer)
 {	urlLength = buffer[0];
-	url.assign(buffer[1], urlLength);
+	url.assign((const char*)&buffer[1], urlLength);
 }
 
 uint8_t Url::getLength(void) const
@@ -64,15 +72,24 @@ const std::string &Url::getUrl(void) const
 
 IpTransport::IpTransport(const uint8_t * const buffer, size_t length)
 {
-	remoteConnection = (buffer[0] >> 7) & 0x01;
-	originalNetworkId = r16(&buffer[1]);
-	transportStreamId = r16(&buffer[3]);
-	serviceId = r16(&buffer[5]);
-	alignmentIndicator = (buffer[7] >> 7) & 0x01;
-	for (size_t i = 0; i < length; ) {
-		Url *url = new Url(&buffer[i + 8]);
+	int pos = 0;
+	remoteConnection = (buffer[pos++] >> 7) & 0x01;
+	if (remoteConnection) {
+		originalNetworkId = r16(&buffer[pos]);
+		transportStreamId = r16(&buffer[pos+2]);
+		serviceId = r16(&buffer[pos+4]);
+		pos += 6;
+	}
+	else {
+		originalNetworkId =
+		transportStreamId =
+		serviceId = 0;
+	}
+	alignmentIndicator = (buffer[pos++] >> 7) & 0x01;
+	while (pos < length) {
+		Url *url = new Url(&buffer[pos]);
 		urls.push_back(url);
-		i += url->getLength() + 1;
+		pos += url->getLength() + 1;
 	}
 }
 
@@ -112,13 +129,23 @@ const UrlList *IpTransport::getUrls(void) const
 	return &urls;
 }
 
-InteractionTransport::InteractionTransport(const uint8_t * const buffer, size_t length)
+InteractionTransport::InteractionTransport(const uint8_t * const buffer, size_t &length)
 {
-	urlBase = new Url(&buffer[0]);
-	for (size_t i = 0; i < length - urlBase->getLength() - 1; ) {
-		Url *urlExtension = new Url(&buffer[i + urlBase->getLength() + 1]);
-		urlExtensions.push_back(urlExtension);
-		i += urlExtension->getLength() + 1;
+	int pos = 0;
+	urlBase = new Url(&buffer[pos]);
+	pos += urlBase->getLength() + 1;
+	length -= pos;
+	if (pos > 1 && length > 0) {
+		int num_extensions = buffer[pos++];
+		length -= 1;
+		pos += 1;
+		for (size_t i = 0; i < num_extensions && length > 0; ++i) {
+			Url *urlExtension = new Url(&buffer[pos]);
+			int bytes = urlExtension->getLength() + 1;
+			length -= bytes;
+			pos += bytes;
+			urlExtensions.push_back(urlExtension);
+		}
 	}
 }
 
@@ -147,15 +174,29 @@ TransportProtocolDescriptor::TransportProtocolDescriptor(const uint8_t * const b
 	transportProtocolLabel = buffer[4];
 	switch (protocolId) {
 		case 0x0001:
-			ASSERT_MIN_DLEN(13);
+			if (buffer[5] & 0x80)
+				ASSERT_MIN_DLEN(11);
 			ocTransport = new OcTransport(&buffer[5]);
 			break;
 		case 0x0002:
+			if (buffer[5] & 0x80)
+				ASSERT_MIN_DLEN(11);
 			ipTransport = new IpTransport(&buffer[5], descriptorLength - 5);
 			break;
 		case 0x0003:
-			interactionTransport = new InteractionTransport(&buffer[5], descriptorLength - 5);
+		{
+			size_t bytesLeft = descriptorLength - 3;
+			int pos = 5;
+			while (bytesLeft > 0 && valid) {
+				int oldBytesLeft = bytesLeft;
+				InteractionTransport *p = new InteractionTransport(&buffer[pos], bytesLeft);
+				interactionTransports.push_back(p);
+				if (!p->getUrlBase()->getLength())
+					valid = false;
+				pos += bytesLeft - oldBytesLeft;
+			}
 			break;
+		}
 	}
 }
 
@@ -169,7 +210,8 @@ TransportProtocolDescriptor::~TransportProtocolDescriptor(void)
 			delete ipTransport;
 			break;
 		case 0x0003:
-			delete interactionTransport;
+			for (InterActionTransportIterator it(interactionTransports.begin()); it != interactionTransports.end(); ++it)
+				delete *it;
 			break;
 	}
 }
@@ -194,7 +236,7 @@ const IpTransport *TransportProtocolDescriptor::getIpTransport(void) const
 	return ipTransport;
 }
 
-const InteractionTransport *TransportProtocolDescriptor::getInteractionTransport(void) const
+const InteractionTransportList *TransportProtocolDescriptor::getInteractionTransports(void) const
 {
-	return interactionTransport;
+	return &interactionTransports;
 }

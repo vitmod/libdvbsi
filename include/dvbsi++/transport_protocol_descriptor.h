@@ -80,12 +80,16 @@ class InteractionTransport
 		UrlList urlExtensions;
 
 	public:
-		InteractionTransport(const uint8_t * const buffer, size_t length);
+		InteractionTransport(const uint8_t * const buffer, size_t &length);
 		~InteractionTransport(void);
 
 		const Url *getUrlBase(void) const;
 		const UrlList *getUrlExtensions(void) const;
 };
+
+typedef std::list<InteractionTransport*> InteractionTransportList;
+typedef InteractionTransportList::iterator InterActionTransportIterator;
+typedef InteractionTransportList::const_iterator InterActionTransportConstIterator;
 
 class TransportProtocolDescriptor : public Descriptor
 {
@@ -94,7 +98,7 @@ class TransportProtocolDescriptor : public Descriptor
 		unsigned transportProtocolLabel			: 8;
 		OcTransport *ocTransport;
 		IpTransport *ipTransport;
-		InteractionTransport *interactionTransport;
+		InteractionTransportList interactionTransports;
 
 	public:
 		TransportProtocolDescriptor(const uint8_t * const buffer);
@@ -104,7 +108,7 @@ class TransportProtocolDescriptor : public Descriptor
 		uint8_t getTransportProtocolLabel(void) const;
 		const OcTransport *getOcTransport(void) const;
 		const IpTransport *getIpTransport(void) const;
-		const InteractionTransport *getInteractionTransport(void) const;
+		const InteractionTransportList *getInteractionTransports(void) const;
 };
 
 #endif /* __transport_protocol_descriptor_h__ */
