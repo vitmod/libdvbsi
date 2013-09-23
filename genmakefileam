@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export LC_ALL=C
+
 # include/dvbsi++/Makefile.am
 
 cd include/dvbsi++
