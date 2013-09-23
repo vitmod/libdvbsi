@@ -1,7 +1,7 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_INIT([libdvbsi++],[0.3.6],[obi@saftware.de],[libdvbsi++])
+AC_INIT([libdvbsi++],[0.3.7],[obi@saftware.de],[libdvbsi++])
 AM_INIT_AUTOMAKE([dist-bzip2 no-define])
 AC_CONFIG_SRCDIR([src/descriptor.cpp])
 AC_CONFIG_HEADERS([libdvbsi++-config.h])
