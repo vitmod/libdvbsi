@@ -38,7 +38,7 @@ EnhancedAC3Descriptor::EnhancedAC3Descriptor(const uint8_t * const buffer) : Des
 	substream3Flag = buffer[2] & 0x01;
 
 	size_t headerLength = 1 + componentTypeFlag + bsidFlag + mainidFlag +
-		asvcFlag + mixInfoExistsFlag + substream1Flag +
+		asvcFlag + substream1Flag +
 		substream2Flag + substream3Flag;
 	ASSERT_MIN_DLEN(headerLength);
 
