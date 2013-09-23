@@ -113,8 +113,8 @@ pkginclude_HEADERS = \
 	short_event_descriptor.h \
 	short_section.h \
 	short_smoothing_buffer_descriptor.h \
-	simple_application_location_descriptor.h \
 	simple_application_boundary_descriptor.h \
+	simple_application_location_descriptor.h \
 	stream_identifier_descriptor.h \
 	stream_type.h \
 	stuffing_descriptor.h \
