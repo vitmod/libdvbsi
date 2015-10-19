@@ -15,12 +15,20 @@
 
 ApplicationInformation::ApplicationInformation(const uint8_t * const buffer)
 {
+	unsigned int length;
+
 	applicationIdentifier = new ApplicationIdentifier(&buffer[0]);
 	applicationControlCode = buffer[6];
 	applicationDescriptorsLoopLength = DVB_LENGTH(&buffer[7]);
 
-	for (size_t i = 0; i < applicationDescriptorsLoopLength; i += buffer[i + 10] + 2)
+	for (size_t i = 0; i < applicationDescriptorsLoopLength; i += length) {
+		if (i + 2 > applicationDescriptorsLoopLength)
+			break;
+		length = buffer[i + 10] + 2;
+		if (i + length > applicationDescriptorsLoopLength)
+			break;
 		descriptor(&buffer[i + 9], SCOPE_MHP);
+	}
 }
 
 ApplicationInformation::~ApplicationInformation(void)
@@ -38,35 +46,43 @@ uint8_t ApplicationInformation::getApplicationControlCode(void) const
 	return applicationControlCode;
 }
 
-ApplicationInformationSection::ApplicationInformationSection(const uint8_t * const buffer) : LongCrcSection(buffer)
+ApplicationInformationSection::ApplicationInformationSection(const uint8_t * const buffer) : LongCrcSection(buffer),
+	commonDescriptorsLength(0),
+	applicationLoopLength(0)
 {
-	commonDescriptorsLength = sectionLength > 10 ? DVB_LENGTH(&buffer[8]) : 0;
+	unsigned int pos, length;
 
-	uint16_t pos = 10;
-	uint16_t bytesLeft = sectionLength > 11 ? sectionLength - 11 : 0;
-	uint16_t loopLength = 0;
-	uint16_t bytesLeft2 = commonDescriptorsLength;
+	if (sectionLength < 13)
+		return;
 
-	while (bytesLeft >= bytesLeft2 && bytesLeft2 > 1 && bytesLeft2 >= (loopLength = 2 + buffer[pos+1])) {
+	commonDescriptorsLength = DVB_LENGTH(&buffer[8]);
+	if (sectionLength < 13 + commonDescriptorsLength)
+		return;
+
+	for (pos = 10; pos < 10 + commonDescriptorsLength; pos += length) {
+		if (pos + 2 > 10 + commonDescriptorsLength)
+			break;
+		length = buffer[pos + 1] + 2;
+		if (pos + length > 10 + commonDescriptorsLength)
+			break;
 		descriptor(&buffer[pos], SCOPE_MHP);
-		pos += loopLength;
-		bytesLeft -= loopLength;
-		bytesLeft2 -= loopLength;
 	}
 
-	if (!bytesLeft2 && bytesLeft > 1) {
-		bytesLeft2 = applicationLoopLength = DVB_LENGTH(&buffer[pos]);
-		pos+=2;
-		bytesLeft-=2;
-		while (bytesLeft >= bytesLeft2 && bytesLeft2 > 8 && bytesLeft2 >= (loopLength = 9 + DVB_LENGTH(&buffer[pos+7]))) {
-			applicationInformation.push_back(new ApplicationInformation(&buffer[pos]));
-			pos += loopLength;
-			bytesLeft -= loopLength;
-			bytesLeft2 -= loopLength;
-		}
+	if (pos != 10 + commonDescriptorsLength)
+		return;
+
+	applicationLoopLength = DVB_LENGTH(&buffer[pos]);
+	if (sectionLength < 13 + commonDescriptorsLength + applicationLoopLength)
+		return;
+
+	for (pos += 2; pos < 12 + commonDescriptorsLength + applicationLoopLength; pos += length) {
+		if (pos + 9 > 12 + commonDescriptorsLength + applicationLoopLength)
+			break;
+		length = DVB_LENGTH(&buffer[pos + 7]) + 9;
+		if (pos + length > 12 + commonDescriptorsLength + applicationLoopLength)
+			break;
+		applicationInformation.push_back(new ApplicationInformation(&buffer[pos]));
 	}
-	else
-		applicationLoopLength = 0;
 }
 
 ApplicationInformationSection::~ApplicationInformationSection(void)
