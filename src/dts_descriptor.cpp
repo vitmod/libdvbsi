@@ -16,10 +16,10 @@ DTSDescriptor::DTSDescriptor(const uint8_t * const buffer) : Descriptor(buffer)
 	ASSERT_MIN_DLEN(5);
 
 	sampleRate = (buffer[2] >> 4) & 0x0f;
-	bitRate = ((buffer[2] & 0x0f) << 2) | (buffer[3] >> 6) & 0x02;
-	numberOfBlocks = ((buffer[3] & 0x3f) << 2) | (buffer[4] >> 7) & 0x01;
+	bitRate = ((buffer[2] & 0x0f) << 2) | ((buffer[3] >> 6) & 0x02);
+	numberOfBlocks = ((buffer[3] & 0x3f) << 2) | ((buffer[4] >> 7) & 0x01);
 	frameSize = ((buffer[4] & 0x7f) << 7) | (buffer[5] >> 1);
-	surroundMode = ((buffer[5] & 0x01) << 6) | (buffer[6] >> 3) & 0x1f;
+	surroundMode = ((buffer[5] & 0x01) << 6) | ((buffer[6] >> 3) & 0x1f);
 	lfeFlag = (buffer[6] >> 2) & 0x01;
 	extendedSurroundFlag = buffer[6] & 0x03;
 
