@@ -104,6 +104,7 @@
 #include <dvbsi++/stream_identifier_descriptor.h>
 #include <dvbsi++/stuffing_descriptor.h>
 #include <dvbsi++/subtitling_descriptor.h>
+#include <dvbsi++/t2_delivery_system_descriptor.h>
 #include <dvbsi++/target_background_grid_descriptor.h>
 #include <dvbsi++/telephone_descriptor.h>
 #include <dvbsi++/teletext_descriptor.h>
@@ -346,6 +347,8 @@ Descriptor *DescriptorContainer::descriptorSiExtended(const uint8_t * const buff
 		return new CpDescriptor(buffer);
 	case CP_IDENTIFIER_DESCRIPTOR:
 		return new CpIdentifierDescriptor(buffer);
+	case T2_DELIVERY_SYSTEM_DESCRIPTOR:
+		return new T2DeliverySystemDescriptor(buffer);
 	default:
 		return new ExtensionDescriptor(buffer);
 	}

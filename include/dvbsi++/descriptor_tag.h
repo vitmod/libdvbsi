@@ -111,6 +111,7 @@ enum SiDescriptorTagExtension {
 	CPCM_DELIVERY_SIGNALLING_DESCRIPTOR		= 0x01,	/* TS/TR 102 825 */
 	CP_DESCRIPTOR					= 0x02,	/* TS/TR 102 825 */
 	CP_IDENTIFIER_DESCRIPTOR			= 0x03, /* TS/TR 102 825 */
+	T2_DELIVERY_SYSTEM_DESCRIPTOR			= 0x04,
 	/* 0x80 - 0xFF: User defined */
 };
 

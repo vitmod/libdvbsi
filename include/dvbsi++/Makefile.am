@@ -119,6 +119,7 @@ pkginclude_HEADERS = \
 	stream_type.h \
 	stuffing_descriptor.h \
 	subtitling_descriptor.h \
+	t2_delivery_system_descriptor.h \
 	table_id.h \
 	target_background_grid_descriptor.h \
 	telephone_descriptor.h \

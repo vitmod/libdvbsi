@@ -115,6 +115,7 @@ libdvbsi___la_SOURCES = \
 	stream_identifier_descriptor.cpp \
 	stuffing_descriptor.cpp \
 	subtitling_descriptor.cpp \
+	t2_delivery_system_descriptor.cpp \
 	target_background_grid_descriptor.cpp \
 	telephone_descriptor.cpp \
 	teletext_descriptor.cpp \
