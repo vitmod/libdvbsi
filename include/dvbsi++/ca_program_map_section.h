@@ -51,6 +51,7 @@ class CaElementaryStreamInfo
 		uint16_t getLength(void) const;
 
 		size_t writeToBuffer(uint8_t * const buffer) const;
+		const CaDescriptorList *getDescriptors(void) const;
 };
 
 typedef std::list<CaElementaryStreamInfo *> CaElementaryStreamInfoList;
@@ -80,6 +81,7 @@ class CaProgramMapSection : public DescriptorContainer
 		void setListManagement(const uint8_t listmanagement);
 		size_t writeToBuffer(uint8_t * const buffer) const;
 		ssize_t writeToFile(int fd) const;
+		const CaElementaryStreamInfoList *getEsInfo(void) const;
 };
 
 typedef std::list<CaProgramMapSection *> CaProgramMapSectionList;

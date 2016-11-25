@@ -105,6 +105,11 @@ size_t CaElementaryStreamInfo::writeToBuffer(uint8_t * const buffer) const
 	return total;
 }
 
+const CaDescriptorList *CaElementaryStreamInfo::getDescriptors(void) const
+{
+	return &descriptors;
+}
+
 bool CaProgramMapSection::append(const ProgramMapSection * const pmt)
 {
 	if (pmt->tableIdExtension != programNumber ||
@@ -216,3 +221,7 @@ ssize_t CaProgramMapSection::writeToFile(const int fd) const
 	return write(fd, buffer, length);
 }
 
+const CaElementaryStreamInfoList *CaProgramMapSection::getEsInfo(void) const
+{
+	return &esInfo;
+}
